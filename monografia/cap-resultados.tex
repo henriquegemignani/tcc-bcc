@@ -4,6 +4,32 @@
 \section{Rede Distribuída}
 \label{sec:resultados:rede}
 
+  \subsection{Protocolo}
+    \subsubsection{Anunciando novo nó}
+      Sempre que um cliente cria um novo nó da rede, este envia para todos os nós que ele conhece, 
+      a mensagem 'ANNOUNCE\_SELF' junto da porta onde escuta.
+      
+      O nó que recebe a mensagem responde 'KNOWN' ou 'WELCOME', dependendo se já conhecia o par
+      (IP, PORTA) do nó novo.
+      
+      Como o cliente trata as duas respostas ainda não foi definido.
+      
+    \subsubsection{Pedindo novos nós}
+      Um cliente pode mandar a mensagem 'REQUEST\_CLIENTS' para qualquer nó da rede para pedir clientes.
+      
+      A resposta para essa mensagem ainda não foi definido.
+      
+  \subsection{Implementação}
+    A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
+    para poder ser utilizado com facilidade pelo \textit{vikings}, que é feito em Lua.
+  
+  \subsection{Problemas}
+    \subsubsection{Bootstrap}
+      Na descrição do comando \textit{Anunciando novo nó}, foi dito que essa mensagem é enviada a todos
+      os nós conhecidos. Se é a primeira vez que rodamos o cliente numa máquina, quais são esses nós?
+      
+      Ainda não achei nenhuma solução ótima para o problema. Até então, o plano é que cada software
+      que utiliza a rede tem uma lista fixa (\textit{hardcoded}) de nós inicias.
 \section{Chat}
 \label{sec:resultados:chat}
 
