@@ -4,20 +4,57 @@
 \section{Rede Distribuída}
 \label{sec:resultados:rede}
 
-  \subsection{Protocolo}
-    \subsubsection{Anunciando novo nó}
-      Sempre que um cliente cria um novo nó da rede, este envia para todos os nós que ele conhece, 
-      a mensagem 'ANNOUNCE\_SELF' junto da porta onde escuta.
+  A rede NOME é composta por diversos nós conectados diretamente um nos outros, sem a necessidade de nenhum servidor centralizado.
+  
+  Para um programa usufruir dos recursos da rede, é necessário primeiro fazer parte da rede. Para tal duas coisas são necessárias:
+  \begin{itemize}
+    \item Conhecer pelo menos 1 nó membro da rede.
+    \item Criar um nó para inserir na rede.
+  \end{itemize}
+  
+  \subsection{Um Nó}
+    \subsubsection{O que é um nó}
+      Todo nó deve possuir um UUIDv4 próprio.
+      Para um nó ser considerado ativo, deve-se escutar em alguma porta TCP qualquer e responder às mensagens recebidas.
       
-      O nó que recebe a mensagem responde 'KNOWN' ou 'WELCOME', dependendo se já conhecia o par
-      (IP, PORTA) do nó novo.
+    \subsubsection{Processo de criação de um nó ativo}
+      Deve-se gerar um UUIDv4, e criar um socket para dar listen.
+
+    \subsubsection{Adicionar o nó na rede}
+      Com o nó ativo, envie a mensagem 'ANNOUNCE\_SELF' para pelo menos 1 nó que faça parte da rede.
+
+  \subsection{Mensagens do Protocolo}
+    Mensagens são cadeias de caracteres codificadas em UTF-8, terminadas por uma quebra de linha
+    (caractere ASCII '\\n'). Uma mensagem pode ter 0 ou mais ocorrencias do caractere ASCII ' ',
+    dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
+    
+    \subsection{Comandos}
+      Temos a seguir todos os comandos formais da rede, incluindo quais argmentos são esperados para cada um.
+        
+      \begin{itemize}
+        \item ANNOUNCE\_SELF <UUID> <PORT> \\
+          O IP de origem está anunciando que criou um novo nó, com o UUID enviado e que está escutando
+          em seu IP, na porta dada.
+          
+          Esse comando tem duas respostas possíveis, 'KNOWN' e 'WELCOME', descritas na próxima seção.
+            Sempre que um cliente cria um novo nó da rede, este envia para todos os nós que ele conhece, 
+            a mensagem 'ANNOUNCE\_SELF' junto da porta onde escuta.
       
-      Como o cliente trata as duas respostas ainda não foi definido.
+            O nó que recebe a mensagem responde 'KNOWN' ou 'WELCOME', dependendo se já conhecia o par
+            (IP, PORTA) do nó novo.
       
-    \subsubsection{Pedindo novos nós}
-      Um cliente pode mandar a mensagem 'REQUEST\_CLIENTS' para qualquer nó da rede para pedir clientes.
+        \item REQUEST\_NODES \\
+          Um cliente pode mandar a mensagem 'REQUEST\_CLIENTS' para qualquer nó da rede para pedir clientes.
+          
+          A resposta para essa mensagem ainda não foi definido.
+      \end{itemize}
       
-      A resposta para essa mensagem ainda não foi definido.
+    \subsection{Respostas}
+      Temos a seguir todos as respostas formais da rede.
+      
+      \begin{itemize}
+        \item KNOWN \\
+          O par (IP, PORT) dado já era conhecido.
       
   \subsection{Implementação}
     A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
