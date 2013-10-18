@@ -23,7 +23,7 @@
     \subsubsection{Adicionar o nó na rede}
       Com o nó ativo, envie a mensagem 'ANNOUNCE\_SELF' para pelo menos 1 nó que faça parte da rede.
 
-  \subsection{Mensagens do Protocolo}
+  \subsection{Mensagens do Protocolo Padrão}
     Mensagens são cadeias de caracteres codificadas em UTF-8, terminadas por uma quebra de linha
     (caractere ASCII '\\n'). Uma mensagem pode ter 0 ou mais ocorrencias do caractere ASCII ' ',
     dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
@@ -33,28 +33,38 @@
         
       \begin{itemize}
         \item ANNOUNCE\_SELF <UUID> <PORT> \\
-          O IP de origem está anunciando que criou um novo nó, com o UUID enviado e que está escutando
-          em seu IP, na porta dada.
+          A origem do comando está anunciando que criou um novo nó, com o UUID enviado e que está escutando
+          no IP que utilizou para enviar a mensagem, na porta <PORT>.
           
-          Esse comando tem duas respostas possíveis, 'KNOWN' e 'WELCOME', descritas na próxima seção.
-            Sempre que um cliente cria um novo nó da rede, este envia para todos os nós que ele conhece, 
-            a mensagem 'ANNOUNCE\_SELF' junto da porta onde escuta.
+          Esse comando não possui resposta.
       
-            O nó que recebe a mensagem responde 'KNOWN' ou 'WELCOME', dependendo se já conhecia o par
-            (IP, PORTA) do nó novo.
-      
-        \item REQUEST\_NODES \\
-          Um cliente pode mandar a mensagem 'REQUEST\_CLIENTS' para qualquer nó da rede para pedir clientes.
+        \item REQUEST\_NODE\_LIST \\
+          Requisição por informações de outros nós que pertencem à rede.
           
-          A resposta para essa mensagem ainda não foi definido.
+          Ao receber esse comando, você deve decidir quantos nós você irá divulgar, e enviar a resposta
+          'NODE\_LIST' informando tal quantidade, seguindo de um 'NODE\_INFO' para cada nó a ser
+          divulgado.
+          
+        \item REQUEST\_KNOWN\_PROTOCOLS \\
+          Requisição de uma lista de protocolos conhecidos por esse nó.
+          
+          Ao receber essa comando, você deve enviar a resposta 'KNOWN\_PROTOCOLS', com as informações corretas.
+          
       \end{itemize}
       
     \subsection{Respostas}
       Temos a seguir todos as respostas formais da rede.
       
       \begin{itemize}
-        \item KNOWN \\
-          O par (IP, PORT) dado já era conhecido.
+        \item NODE\_LIST <SIZE> \\
+          Informa que após essa mensagem, irá enviar mais SIZE mensagens do tipo 'NODE\_INFO'.
+          
+        \item NODE\_INFO <UUID> <IP> <PORT> \\
+          Informa que existe um nó com uuid <UUID> escutando em <IP>:<PORT>.
+          
+        \item KNOWN\_PROTOCOLS [<PROTOCOL1> [<PROTOCOL2> [...]]] \\
+          Informa que conhece os protocolos <PROTOCOL1>, <PROTOCOL2>, ... e irá responder aos
+          comandos descritos por tais protocolos.
       
   \subsection{Implementação}
     A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
