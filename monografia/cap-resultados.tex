@@ -4,9 +4,12 @@
 \section{Rede Distribuída}
 \label{sec:resultados:rede}
 
-  A rede NOME é composta por diversos nós conectados diretamente um nos outros, sem a necessidade de nenhum servidor centralizado.
+  A rede NOME é composta por diversos nós conectados diretamente um nos outros, sem a necessidade
+  de nenhum servidor centralizado.
   
-  Para um programa usufruir dos recursos da rede, é necessário primeiro fazer parte da rede. Para tal duas coisas são necessárias:
+  Para um programa usufruir dos recursos da rede, é necessário primeiro fazer parte da rede. Para 
+  tal duas coisas são necessárias:
+  
   \begin{itemize}
     \item Conhecer pelo menos 1 nó membro da rede.
     \item Criar um nó para inserir na rede.
@@ -15,7 +18,8 @@
   \subsection{Um Nó}
     \subsubsection{O que é um nó}
       Todo nó deve possuir um UUIDv4 próprio.
-      Para um nó ser considerado ativo, deve-se escutar em alguma porta TCP qualquer e responder às mensagens recebidas.
+      Para um nó ser considerado ativo, deve-se escutar em alguma porta TCP qualquer e responder às
+      mensagens recebidas.
       
     \subsubsection{Processo de criação de um nó ativo}
       Deve-se gerar um UUIDv4, e criar um socket para dar listen.
@@ -25,30 +29,32 @@
 
   \subsection{Mensagens do Protocolo Padrão}
     Mensagens são cadeias de caracteres codificadas em UTF-8, terminadas por uma quebra de linha
-    (caractere ASCII '\textbackslash n'). Uma mensagem pode ter 0 ou mais ocorrencias do caractere ASCII~'~',
-    dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
+    (caractere ASCII '\textbackslash n'). Uma mensagem pode ter 0 ou mais ocorrencias do caractere
+    ASCII~'~', dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
     
     \subsection{Comandos}
-      Temos a seguir todos os comandos formais da rede, incluindo quais argmentos são esperados para cada um.
+      Temos a seguir todos os comandos formais da rede, incluindo quais argmentos são esperados
+      para cada um.
         
       \begin{itemize}
         \item ANNOUNCE\_SELF <UUID> <PORT> \\
-          A origem do comando está anunciando que criou um novo nó, com o UUID enviado e que está escutando
-          no IP que utilizou para enviar a mensagem, na porta <PORT>.
+          A origem do comando está anunciando que criou um novo nó, com o UUID enviado e que está
+          escutando no IP que utilizou para enviar a mensagem, na porta <PORT>.
           
           Esse comando não possui resposta.
       
         \item REQUEST\_NODE\_LIST \\
           Requisição por informações de outros nós que pertencem à rede.
           
-          Ao receber esse comando, você deve decidir quantos nós você irá divulgar, e enviar a resposta
-          'NODE\_LIST' informando tal quantidade, seguindo de um 'NODE\_INFO' para cada nó a ser
-          divulgado.
+          Ao receber esse comando, você deve decidir quantos nós você irá divulgar, e enviar a
+          resposta 'NODE\_LIST' informando tal quantidade, seguindo de um 'NODE\_INFO' para cada
+          nó a ser divulgado.
           
         \item REQUEST\_KNOWN\_PROTOCOLS \\
           Requisição de uma lista de protocolos conhecidos por esse nó.
           
-          Ao receber essa comando, você deve enviar a resposta 'KNOWN\_PROTOCOLS', com as informações corretas.
+          Ao receber essa comando, você deve enviar a resposta 'KNOWN\_PROTOCOLS', com as
+          informações corretas.
           
       \end{itemize}
       
@@ -56,6 +62,13 @@
       Temos a seguir todos as respostas formais da rede.
       
       \begin{itemize}
+        \item UNKNOWN\_COMMAND \\
+          Enviada após receber algum comando desconhecido.
+          
+        \item INPUT\_ERROR \\
+          Enviada após receber um número incorreto de argumentos para algum comando, ou algum
+          argumento do tipo errado.
+      
         \item NODE\_LIST <SIZE> \\
           Informa que após essa mensagem, irá enviar mais SIZE mensagens do tipo 'NODE\_INFO'.
           
@@ -74,8 +87,9 @@
   
   \subsection{Problemas}
     \subsubsection{Bootstrap}
-      Na descrição do comando \textit{Anunciando novo nó}, foi dito que essa mensagem é enviada a todos
-      os nós conhecidos. Se é a primeira vez que rodamos o cliente numa máquina, quais são esses nós?
+      Na descrição do comando \textit{Anunciando novo nó}, foi dito que essa mensagem é enviada a
+      todos os nós conhecidos. Se é a primeira vez que rodamos o cliente numa máquina, quais são
+      esses nós?
       
       Ainda não achei nenhuma solução ótima para o problema. Até então, o plano é que cada software
       que utiliza a rede tem uma lista fixa (\textit{hardcoded}) de nós inicias.
