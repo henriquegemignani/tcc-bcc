@@ -59,40 +59,85 @@
 \vspace*{0.2cm} 
             \begin{block}{Introdução}
             \justifying
-                kgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd goifdjgoifdgaosdf oidfoisfdoigjasfdigaofg oafd gas fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoia dfogoas fkgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd goifdjgoifdgaosdf oidfoisfdoigjasfdigaofg oafd ga\vspace*{0.1cm}
+                Desenvolvedores de jogos eletrônicos livres que desejam implementar alguma
+                funcionalidade multijogador sofrem com um problema: manter servidores, ou pelo
+                menos uma lista desses. Jogos comerciais mais antigos para PC adotavam a
+                estratégia de permitir que o jogador se conectasse a um endereço IP qualquer.
+                Também era popular o jogo ter um lista de servidores oficial, que podia ser
+                acessada de dentro do jogo. Já jogos comerciais recentes sempre possuem um
+                servidor oficial principal do qual todas funcionalidades multijogador dependem.
+                
+                \vspace*{0.15cm}
+                
+                No caso de um jogo livre, o desenvolvedor tem duas opções: manter ele mesmo um
+                servidor principal ou deixar esse trabalho para a comunidade. O primeiro implica
+                num custo de manutenção para o desenvolvedor, enquanto o segundo aumenta a
+                barreira de entrada para novos jogadores, dado que o jogador precisa ativamente
+                procurar tal lista.
+                
+                \vspace*{0.15cm}
 
-            \vspace*{0.2cm}
+                Neste trabalho, propomos uma rede distribuída descentralizada na qual
+                todos os jogadores e servidores participam como uma solução alternativa.
+                
+                \vspace*{0.2cm}
             \end{block}
+            
             \vspace*{0.2cm}
 
             \begin{block}{Objetivos}
-            \justifying 
- gspdof gspdf gspdfg sf g spdfog sdfg sdpf gpsodf gspodf gposdf posdf gposdf gopsf dgokps dfpgoks dfpokg sdpg spodf gposdfg spodfgsokdfskdf spdf gspodf gposdf gopsdf gposdfg psodf gpos dfposdfgsdf gsdfg spdf gsdfgsdfgsfdgsfdg              vkspfb sf  sfdks fdgpws fpogsfdg sfd sfdpg fd
-
-\vspace*{0.2cm} 
+              \justifying
+              \begin{itemize}
+                \item Desenvolver uma rede peer-to-peer com o propósito de permitir que usuários do jogo consigam encontrar outros jogadores,
+                sem a necessidade de um servidor central. 
+                
+                \vspace*{0.4cm}
+                
+                \item Implementar pelo menos 1 prova de conceito.
+              \end{itemize}
+              \vspace*{0.2cm} 
             \end{block}
-\vspace*{0.2cm} 
-            \begin{block}{Desorientação a aspectos}
+            
+            \vspace*{0.2cm}
+            
+            \begin{block}{Rede peer-to-peer}
                 \justifying 
                 \begin{figure}[h]
+                  \fbox{\includegraphics[width=0.4\textwidth]{p2p-network.png}}
+                  \fbox{\includegraphics[width=0.4\textwidth]{server-based-network.png}}
+                  \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita)}
+                \end{figure}
                 
-                      %\includegraphics{biclique.png}
-                  
-                  \caption{Grafo bonito!}
-                \end{figure}
-                goifdjgoifdgaosdf oidfoisfdoigjasfdigaofg oafd gas fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoia dfogoas fkgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd goifdjgoifdgaosdf oidfoisfdoigjasfdigaofg oafd gas fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoia dfogoas fkgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd goifdjgoifdgaosdf oidfoisfdoigjasfdigaofg oafd gas fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoia dfogoas fkgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd goifdjgoifdgaosdf oidfoisfdoigjasfdigaofg oafd gas fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoia dfogoas f
+                Uma rede peer-to-peer é um tipo de arquitetura de rede descentralizada e distribuída
+                onde cada nó individual da rede atuam como consumidores e fornecedores de recursos,
+                simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
+                requisitam serviços fornecidos por servidores centrais.
+                
+                \vspace*{0.2cm}
+            \end{block}
+            
+            \vspace*{0.2cm}
 
-               \begin{align*}
-                \min_x{\sum\limits_{e_{ij} \in E} (w_{ij}^p(x_i - x_j)^2)};
-                       \qquad & \text{ } \textstyle x_F = 1,\text{ }x_B = 0,\text{ }p \ge 2, \\
-                    & \text{ } s_i = 1 \text{ se } x_i \ge {\displaystyle \frac{1}{2}},\text{ }0 \text { se } x_i < {\displaystyle \frac{1}{2}}.
-                \end{align*}
-                \begin{figure}[htp]
-                  \centering
-                    %\fbox{\includegraphics[width=0.4\textwidth]{clustering.png}}
-                  \caption{Grafo bacana}
-                  
+            \begin{block}{Protocolo de Rede}
+            \justifying
+                Quando mensagens são trocadas através de uma rede de computadores seguindo um sistema de regras digitais,
+                tal sistema é chamado de um protocolo de rede. Sistemas de comunicação usam formatos bem-definidos para
+                trocar mensagens. 
+                
+                \vspace*{0.4cm} 
+                
+                \begin{figure}[h]
+                  \fbox{\includegraphics[width=0.4\textwidth]{message_flows.png}}
+                  \caption{Exemplo de fluxo de mensagens em um protocolo}
                 \end{figure}
+                
+                \vspace*{0.2cm} 
+                
+                Cada mensagem tem um significado exato intencionado a provocar uma resposta particular
+                do receptor. Portanto, o protocolo define a sintaxe, semânticas, e sincronização da comunicação. Protocolos
+                de comunicação devem ser acordados por todas as partes envolvidas.
+                               
+                \vspace*{0.2cm} 
             \end{block}
           }
         \end{minipage}
@@ -111,41 +156,62 @@
             % ---------------------------------------------------------%
             % fill each column with content
             
-\vspace*{0.2cm} 
-            \begin{block}{Grafos desorientados}
-  s fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoiojasdfgoia dfogoas fkgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd            
-                \begin{figure}
-                \centering
+            \vspace*{0.2cm} 
+            \begin{block}{Etherclan}
+                A rede Etherclan é uma rede Peer-to-Peer com o objetivo de permitir que algum cliente encontre outros clientes
+                pertinentes. Ela tem as seguintes propriedades:
                 
-                    %\includegraphics[width=0.45\textwidth]{clustering.png}
-
-
+                \begin{itemize}
+                  \item Não depende de um servidor centralizado.
+                  \item Pode ser utilizada por mais de um jogo simultaneamente.
+                  \item Capaz de buscar por membros de um jogo específico.
+                \end{itemize}
                 
-                \caption{Grafo legal}
-                \end{figure} 
-s fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd              
-\vspace*{0.2cm} 
+                \vspace*{0.2cm} 
             \end{block}
-\vspace*{0.2cm} 
-            \begin{block}{Conclusão}
-                \justifying 
- s fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgoia dfogoas fkgasofhgsdfg f gsjdfg sfd ffr i fgjfgoafdsjg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd goifdjgoifdgaosdf  aoifdg aoif asf asfd goaifjdg aifdg asdf safd
-               
-Yupi, acabei!
 
+            \vspace*{0.2cm} 
+            
+            \begin{block}{Resultados: Chat}
+              \justifying 
+                Como prova de conceito, foi implementado um programa de conversação que utiliza a rede para enviar e receber
+                mensagens de outros nós. As mensagens são enviadas para todos e sem nome, com o único identificador sendo o IP
+                de origem.
                 
                 \begin{figure}[htp]
                   \centering
-                   %\fbox{\includegraphics[width=0.3\textwidth]{graph.png}}
-                  \caption{Grafo batuta!}
+                   \fbox{\includegraphics[width=0.6\textwidth]{chat.png}}
+                  \caption{Chat em funcionamento}
                 \end{figure}
-s fdfoig aifds gadfgadfi gsadfisadfga ofdgoafdgoaifdsg oaoif   fdog jsoidf gsoidf goia fdgojasdfgojg f o oi fgoiadfoiaf goaisfd safdog afdoig saodfg aoifdg aoif asf asfd goaifjdg aifdg asdf safd            \end{block}
-\vspace*{0.2cm} 
+                \begin{figure}[htp]
+                  \centering
+                   \fbox{\includegraphics[width=0.9\textwidth]{chat-log.png}}
+                  \caption{Log das mensagens enviadas e recebidas durante a descoberta de nós}
+                \end{figure}
+                \vspace*{0.2cm} 
+            \end{block}
+            
+            \vspace*{0.2cm} 
+            \begin{block}{Trabalhos Futuros}
+                Durante o desenvolvimento do protocolo e principalmente da prova de conceito, vários pontos se mostraram fundamentais.
+                                
+                \begin{itemize}
+                  \item Política de quantos outros nós buscar.
+                  \item Política de quando que um nó é considerado morto e deve ser ignorado.
+                  \item Diminuir a complexidade de para quais nós devo perguntar para algo melhor que O(n).
+                \end{itemize}
+                
+                \vspace*{0.2cm} 
+            \end{block}
+            
+            \vspace*{0.2cm} 
+            
             \begin{block}{Referências}
-            \small
-            \bibliographystyle{alpha} 
-            \bibliography{ref}
-\vspace*{0.2cm} 
+              \small
+                \begin{itemize}
+                    \item Rüdiger Schollmeier, A Definition of Peer-to-Peer Networking for the Classification of Peer-to-Peer Architectures and Applications, Proceedings of the First International Conference on Peer-to-Peer Computing, IEEE (2002).
+                \end{itemize}
+                \vspace*{0.2cm} 
             \end{block}
             \vfill
           }
