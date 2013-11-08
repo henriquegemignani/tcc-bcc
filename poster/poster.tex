@@ -10,6 +10,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e} 
 
+\usepackage[T1]{fontenc}
+\usepackage[justification=centering]{caption}
+
 
 \usepackage{amsmath,amsthm, amssymb, latexsym}
 \usepackage[orientation=portrait,size=a2,scale=1.4]{beamerposter}
@@ -30,9 +33,9 @@
 
 \listfiles
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{\huge }
+\title{\huge Etherclan - Rede distribuída descentralizada para localização de outros usuários}
 
-\author{Henrique Gemignani Passos Lima, Orientador: Prof. Dr. Daniel Macêdo Batista}
+\author{Henrique Gemignani Passos Lima <henrique@gemignani.org>, Orientador: Prof. Dr. Daniel Macêdo Batista}
 \institute[Universidade de São Paulo] % (optional, but mostly needed)
 {
   Instituto de Matemática e Estatística, Universidade de São Paulo - Trabalho
@@ -79,8 +82,8 @@
                 
                 \vspace*{0.15cm}
 
-                Neste trabalho, propomos uma rede distribuída descentralizada na qual
-                todos os jogadores e servidores participam como uma solução alternativa.
+                \textbf{Neste trabalho, propomos uma rede distribuída descentralizada na qual
+                todos os jogadores e servidores participam como uma solução alternativa.}
                 
                 \vspace*{0.2cm}
             \end{block}
@@ -103,18 +106,14 @@
             \vspace*{0.2cm}
             
             \begin{block}{Rede peer-to-peer}
-                \justifying 
+                \center 
                 \begin{figure}[h]
                   \fbox{\includegraphics[width=0.45\textwidth]{p2p-network.png}}
                   \fbox{\includegraphics[width=0.45\textwidth]{server-based-network.png}}
-                  \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita)}
+                  \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita). 
+                    Fonte: Baseado em figura de Wikimedia Commons}
                 \end{figure}
-                
-                Uma rede peer-to-peer é um tipo de arquitetura de rede descentralizada e distribuída
-                onde cada nó individual da rede atuam como consumidores e fornecedores de recursos,
-                simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
-                requisitam serviços fornecidos por servidores centrais.
-                
+                                
                 \vspace*{0.2cm}
             \end{block}
             
@@ -129,8 +128,9 @@
                 \vspace*{0.4cm} 
                 
                 \begin{figure}[h]
-                  \fbox{\includegraphics[width=0.4\textwidth]{message_flows.png}}
-                  \caption{Exemplo de fluxo de mensagens em um protocolo}
+                  \fbox{\includegraphics[width=0.4\textwidth]{passive_ftp_connection.png}}
+                  \caption{Exemplo de fluxo de mensagens no protocolo FTP.
+                    Fonte: Wikimedia Commons}
                 \end{figure}
                 
                 \vspace*{0.2cm} 
@@ -183,7 +183,7 @@
                 
                 \vspace*{0.2cm}
                 
-                E as seguintes respostas possíveis:
+                E a seguinte resposta possível:
                 \begin{itemize}
                   \item NODE\_INFO -- Informações sobre um nó da rede.
                 \end{itemize}
@@ -201,12 +201,12 @@
                 
                 \begin{figure}[htp]
                   \centering
-                   \fbox{\includegraphics[width=0.6\textwidth]{chat.png}}
+                   \fbox{\includegraphics[width=0.7\textwidth]{chat.png}}
                   \caption{Chat em funcionamento}
                 \end{figure}
                 \begin{figure}[htp]
                   \centering
-                   \fbox{\includegraphics[width=0.9\textwidth]{chat-log.png}}
+                   \fbox{\includegraphics[width=0.95\textwidth]{chat-log.png}}
                   \caption{Log das mensagens enviadas e recebidas durante a descoberta de nós}
                 \end{figure}
                 
@@ -214,7 +214,7 @@
                 
                 Resultados obtidos com esse exemplo incluem:
                 \begin{itemize}
-                  \item Funciona! É possível conseguir encontrar a rede inteira atravéz de alguns nós.
+                  \item Funciona! É possível conseguir encontrar a rede inteira através de alguns nós.
                   \item Problemas com NAT. Sem adotar pelo menos UPnP, torna-se impraticável o uso para encontrar nós atravéz da Internet.
                   \item É necessário ter boas escolhas em quando iniciar novas buscas por nós, assim como por quanto tempo executar a busca.
                   \item Nós não avisam quando eles ficam offline, então algum critério para decidir se um nó deixou de existir é importante.
@@ -225,26 +225,27 @@
             
             \vspace*{0.2cm} 
             \begin{block}{Trabalhos Futuros}
-                Durante o desenvolvimento do protocolo e principalmente da prova de conceito, vários pontos se mostraram fundamentais.
-                                
+                Durante o desenvolvimento do protocolo e principalmente da prova de conceito, vários pontos se mostraram fundamentais e que serão estudados no futuro.
+                
                 \begin{itemize}
                   \item Política de quantos outros nós buscar.
                   \item Política de quando que um nó é considerado morto e deve ser ignorado.
                   \item Diminuir a complexidade de para quais nós devo perguntar para algo melhor que O(n).
+                  \item Desenvolvimento de uma biblioteca em C++ para facilitar a integração com outros projetos.
                 \end{itemize}
                 
                 \vspace*{0.2cm} 
             \end{block}
             
-            \vspace*{0.2cm} 
-            
-            \begin{block}{Referências}
-              \small
-                \begin{itemize}
-                    \item Rüdiger Schollmeier, A Definition of Peer-to-Peer Networking for the Classification of Peer-to-Peer Architectures and Applications, Proceedings of the First International Conference on Peer-to-Peer Computing, IEEE (2002).
-                \end{itemize}
-                \vspace*{0.2cm} 
-            \end{block}
+            %\vspace*{0.2cm} 
+            %
+            %\begin{block}{Referências}
+            %  \small
+            %    \begin{itemize}
+            %        \item Rüdiger Schollmeier, A Definition of Peer-to-Peer Networking for the Classification of Peer-to-Peer Architectures and Applications, Proceedings of the First International Conference on Peer-to-Peer Computing, IEEE (2002).
+            %    \end{itemize}
+            %    \vspace*{0.2cm} 
+            %\end{block}
             \vfill
           }
         \end{minipage}
