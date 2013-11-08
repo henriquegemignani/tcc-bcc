@@ -56,7 +56,9 @@
             % Since all columns are the same length, it is all nice and tidy.  You have to get the height empirically
             % ---------------------------------------------------------%
             % fill each column with content            
-\vspace*{0.2cm} 
+            
+            \vspace*{0.8cm}
+            
             \begin{block}{Introdução}
             \justifying
                 Desenvolvedores de jogos eletrônicos livres que desejam implementar alguma
@@ -103,8 +105,8 @@
             \begin{block}{Rede peer-to-peer}
                 \justifying 
                 \begin{figure}[h]
-                  \fbox{\includegraphics[width=0.4\textwidth]{p2p-network.png}}
-                  \fbox{\includegraphics[width=0.4\textwidth]{server-based-network.png}}
+                  \fbox{\includegraphics[width=0.45\textwidth]{p2p-network.png}}
+                  \fbox{\includegraphics[width=0.45\textwidth]{server-based-network.png}}
                   \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita)}
                 \end{figure}
                 
@@ -156,15 +158,34 @@
             % ---------------------------------------------------------%
             % fill each column with content
             
-            \vspace*{0.2cm} 
+            \vspace*{0.8cm}
+            
             \begin{block}{Etherclan}
-                A rede Etherclan é uma rede Peer-to-Peer com o objetivo de permitir que algum cliente encontre outros clientes
+                A rede Etherclan é uma rede Peer-to-Peer com o objetivo de permitir que algum cliente
+                encontre outros clientes
                 pertinentes. Ela tem as seguintes propriedades:
                 
                 \begin{itemize}
                   \item Não depende de um servidor centralizado.
                   \item Pode ser utilizada por mais de um jogo simultaneamente.
                   \item Capaz de buscar por membros de um jogo específico.
+                \end{itemize}
+                
+                \vspace*{0.5cm}
+                Para que os nós consigam conversar entre si, foi necessário definir um protocolo. 
+                Nele, foram existem as seguintes mensagems:
+                \begin{itemize}
+                  \item ANNOUNCE\_SELF -- Anuncia a própria existência para o receptor.
+                  \item REQUEST\_NODE\_LIST -- Requisita do receptor uma lista de nós da rede.
+                  \item KEEP\_ALIVE -- Avisa que vai enviar mais mensagens nessa mesma conexão.
+                  \item SERVICE -- Comando para ser tratado usando alguma extensão definida por terceiros.
+                \end{itemize}
+                
+                \vspace*{0.2cm}
+                
+                E as seguintes respostas possíveis:
+                \begin{itemize}
+                  \item NODE\_INFO -- Informações sobre um nó da rede.
                 \end{itemize}
                 
                 \vspace*{0.2cm} 
@@ -188,7 +209,18 @@
                    \fbox{\includegraphics[width=0.9\textwidth]{chat-log.png}}
                   \caption{Log das mensagens enviadas e recebidas durante a descoberta de nós}
                 \end{figure}
-                \vspace*{0.2cm} 
+                
+                \vspace*{0.4cm}
+                
+                Resultados obtidos com esse exemplo incluem:
+                \begin{itemize}
+                  \item Funciona! É possível conseguir encontrar a rede inteira atravéz de alguns nós.
+                  \item Problemas com NAT. Sem adotar pelo menos UPnP, torna-se impraticável o uso para encontrar nós atravéz da Internet.
+                  \item É necessário ter boas escolhas em quando iniciar novas buscas por nós, assim como por quanto tempo executar a busca.
+                  \item Nós não avisam quando eles ficam offline, então algum critério para decidir se um nó deixou de existir é importante.
+                \end{itemize}
+                
+                \vspace*{0.2cm}
             \end{block}
             
             \vspace*{0.2cm} 
