@@ -29,7 +29,7 @@
   Etherclan
 }
 \subtitle{
-  DESCRIÇÃO
+  Rede distribuída descentralizada para localização de outros usuários
 }
 \author{Henrique Gemignani Passos Lima}
 
@@ -84,12 +84,6 @@
 %-------------------------------------
 \section{Introdução: Motivações e Objetivos}
 %-------------------------------------
-\frame{
-  \begin{center}
-  \LARGE 1. Introdução: Motivações e Objetivos
-  \end{center}
-}
-%-------------------------------------
 \begin{frame}[fragile]
   \frametitle{Motivações}
   %\begin{figure}
@@ -118,17 +112,15 @@
     \vspace{10pt}
     \item Servidores dedicados por parte dos jogadores
         \pause
-        \begin{itemize} \item Como encontrar esses servidores? \end{itemize}
+        \begin{itemize} \item Como encontrar esses servidores de maneira automatizada? \end{itemize}
   \end{itemize}
 
 \end{frame}
 %-------------------------------------
 \frame{
   \frametitle{Proposta de TCC}
-  \pause
-  \vspace{-20pt}
   \begin{center}
-    Etherclan
+    \huge{Etherclan}
   \end{center}
   \vspace{20pt}
   \begin{itemize}
@@ -143,15 +135,23 @@
   \end{itemize}
 }
 %-------------------------------------
-\section{Funcionamento}
+\section{Conceitos}
 %-------------------------------------
 \begin{frame}
-  \frametitle{Ideia Geral}
-  (Insira imagem de uma rede P2P, destacando o que é um nó.) \\
-  \vspace{20pt}
-  Na imagem acima, cada vértice do grafo representa um nó da rede,
-  enquanto cada arestra representa que esses 2 nós se conhecem.
+  \frametitle{Peer-to-peer X Cliente-Servidor}
+  
+    \begin{figure}[h]
+      \fbox{\includegraphics[width=0.45\textwidth]{../poster/p2p-network.png}}
+      \fbox{\includegraphics[width=0.45\textwidth]{../poster/server-based-network.png}}
+    \end{figure}
+  
+    Numa rede peer-to-peer cada nó da rede atua como consumidores e
+    fornecedores de recursos, em contraste com redes cliente-servidor onde nós
+    clientes apenas requisitam serviços de servidores centrais.
+  
 \end{frame}
+%-------------------------------------
+\section{Funcionamento}
 %-------------------------------------
 \begin{frame}
   \frametitle{Entrando na rede}
@@ -162,13 +162,40 @@
     \pause
     \item Informar algum membro da rede sobre o novo nó.
   \end{enumerate}
-  \pause
-  \vspace{20pt}
-  Mas para qual nó eu devo informar
-  
-  Bootstrap.
 \end{frame}
-
+%-------------------------------------
+\begin{frame}
+  \frametitle{Bootstrapping}
+  
+  Mas como eu consigo esse primeiro nó?
+  \vspace{20pt}
+  \pause
+  \begin{itemize}
+    \item Lista fixa de IP e porta.
+    \pause
+    \item Busca cega.
+    \pause
+    \item Aproveitar alguma outra rede P2P?
+  \end{itemize}
+\end{frame}
+%-------------------------------------
+\begin{frame}
+  \frametitle{Protocolo de Rede}
+  
+  Para que dois nós consigam se comunicar, é necessário que ambos sigam um protocolo de rede.
+  
+  \vspace{20pt}
+  \pause
+  
+  Qual o básico necessário que esse protocolo tem que permitir?
+  \begin{itemize}
+    \pause
+    \item Informar um novo nó na rede.
+    \pause
+    \item Requisitar uma lista de nós da rede.
+  \end{itemize}
+\end{frame}
+%-------------------------------------  
 \begin{frame}[fragile]
   \frametitle{Ideia Geral}
   \pause
