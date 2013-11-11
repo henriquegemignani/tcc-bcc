@@ -86,9 +86,6 @@
 %-------------------------------------
 \begin{frame}[fragile]
   \frametitle{Motivações}
-  %\begin{figure}
-  %  \includegraphics[width=.9\textwidth]{images/horus+sublime.png}
-  %\end{figure}
   Interesse em:
   \begin{itemize}
     \item Jogos eletrônicos.
@@ -154,6 +151,12 @@
 \section{Funcionamento da rede}
 %-------------------------------------
 \begin{frame}
+  \begin{center}
+    \huge{Funcionamento da rede}
+  \end{center}
+\end{frame}
+%-------------------------------------
+\begin{frame}
   \frametitle{Entrando na rede}
   Para entrar na rede, é necessário dois passos.
   \pause
@@ -202,7 +205,7 @@
   Antes de se aprofundar no protocolo, quais informações temos sobre cada nó?
   \pause
   \begin{itemize}
-    \item Identificador único.
+    \item Um UUID (Universally Unique IDentifier), segundo RFC 4122.
     \pause
     \item Endereço IP e porta.
     \pause
@@ -237,6 +240,25 @@
 \end{frame}
 %-------------------------------------
 \section{Resultados}
+%-------------------------------------
+\begin{frame}
+  \begin{center}
+    \huge{Resultados}
+  \end{center}
+\end{frame}
+%-------------------------------------
+\begin{frame}
+  \frametitle{Daemon}
+  
+  \makebox[\linewidth]{
+    \includegraphics[width=1.2\textwidth]{daemon.png}
+  }
+  
+  \vspace{10pt}
+  
+  Proposta: fornecer um nó para servir como bootstrap para outros.
+  
+\end{frame}
 %-------------------------------------
 \begin{frame}
   \frametitle{Chat}
