@@ -220,7 +220,20 @@
 \begin{frame}
   \frametitle{Desenvolvimento do Protocolo}
   
-  BLERGH
+  Estratégia inicial foi listar todas as necessidades do projeto de início,
+  similar a como se modela um banco de dados.
+  
+  \pause
+  \vspace{10pt}
+  
+  Pelo menos 1 mês foi gasto travado nesse passo, sem progresso. \\
+  
+  \pause
+  \vspace{20pt}
+  
+  Projeto começou a andar bastante quando a estratégia foi mudada para
+  implementar o que precisa para o momento, mudando sempre que necessário,
+  seguindo ideologia de programação ágil.
 \end{frame}
 %-------------------------------------
 \section{Resultados}
@@ -228,38 +241,63 @@
 \begin{frame}
   \frametitle{Chat}
   
-  Desenvolvido como uma prova de conceito
+  \begin{figure}
+  \includegraphics{chat.png}
+  \end{figure}
+  
+  \pause
+  
+  Proposta: um chat que envia e recebe mensagens para nós da rede, utilizando
+  um serviço de nome \textit{chat}. Não possui nomes de usuário, nem confirmação
+  de quem recebeu as mensagens enviadas.
+  
+  \vspace{10pt}
+  \pause
+ 
+  Desenvolvido como uma prova de conceito, demonstrou os seguintes pontos:
+  \begin{itemize}
+    \pause
+    \item Funciona!
+    \pause
+    \item Precisa de melhorias no controle de nós conhecidos
+  \end{itemize}
 \end{frame}
 %-------------------------------------  
-\begin{frame}[fragile]
-  \frametitle{Ideia Geral}
-  \pause
-  \begin{block}{myscript.lua}
-    \begin{lstlisting}[language=lua]
-variable = 42
-function foo (x, y)
-  return x+y
-end
-    \end{lstlisting}
-  \end{block}
-\end{frame}
-%-------------------------------------
-%\section{Unlimited slide works}
-%-------------------------------------
 \begin{frame}
-  \begin{center}
-    \LARGE OK!
-  \end{center}
-\end{frame}
-%-------------------------------------
-\begin{frame}
-  \frametitle{Bibliografia}
+  \frametitle{Futuro}
+  
   \begin{itemize}
-    \footnotesize
-    \item[1]
-      %Lua C API. http://www.lua.org/manual/5.1/manual.html\#5, Novembro 2013.
-    \vspace{1em}
+    \item Definir estratégias melhores para:
+      \begin{itemize}
+        \item Considerar um nó como morto
+        \item Parar busca por novos nós
+        \item Começar outra busca por novos nós
+      \end{itemize}
+    
+    \pause
+    \vspace{15pt}
+    
+    \item Fazer uma biblioteca em C++ para facilitar integração com outros projetos.
+      \begin{itemize}
+        \item Um projeto em C++ é facilmente exportado para diversas outras linguagens. \tiny{(Ouroboros)}
+      \end{itemize}
+      
+    \pause
+    \vspace{15pt}
+    
+    \item Utilizar em outros projetos!
+      
   \end{itemize}
+\end{frame}
+%-------------------------------------
+\begin{frame}
+  \frametitle{kthxbye}
+  \begin{center}
+    \huge{Fim}
+    \\
+    \vspace{20pt}
+    \tiny{Perguntas?}
+  \end{center}
 \end{frame}
 %-------------------------------------
 \end{document}
