@@ -11,21 +11,26 @@
 
 \section{Vikings}
 \label{sec:conceitos:vikings}
-  O \textit{vikings} é um software livre\footnotemark produzido numa experiência de mini-projetos realizada pelo USPGameDev\footnotemark. 
+  O \textit{vikings}\footnotemark{} é um software livre produzido numa experiência de mini-projetos realizada pelo USPGameDev\footnotemark. 
   Foi desenvolvido em Janeiro e Fevereiro de 2013 por Henrique Gemignani Passos Lima e Wilson Kazuo Mizutani 
-  utilizando a LÖVE, um arcabouço para jogos 2D em Lua.
+  utilizando a LÖVE, um arcabouço para jogos 2D em Lua\footnotemark{}.
   
   \begin{figure}
     \includegraphics{imagens/vikings-1.png}
     \caption{Imagem do vikings}
   \end{figure}
+  
+  \addtocounter{footnote}{-3}
 
-  \footnotetext{
-    Código fonte se encontra em \url{https://github.com/uspgamedev/vikings}.
+  \stepcounter{footnote}\footnotetext{
+    Página do projeto: \url{http://uspgamedev.org/projetos/vikings/} (última visita em 23/11/2013).
   }
-  \footnotetext{
+  \stepcounter{footnote}\footnotetext{
     O USPGameDev é um grupo de pesquisa e desenvolvimento de jogos da
     Universidade de São Paulo. Ver \url{http://uspgamedev.org/} (última visita em 03/09/2013).
+  }
+  \stepcounter{footnote}\footnotetext{
+    Página oficial: \url{http://www.lua.org/} (última visita em 23/11/2013).
   }
 
   \subsection{O Jogo}
@@ -46,14 +51,14 @@
     \subsubsection{Orientação a Objetos}
       Lua não possui orientação a objetos nativamente, mas utilizando as ferramentas da linguagem é possível
       implementar um sistema de orientação a objetos baseada em protótipos.
-      No projeto, utilizamos o LUX\footnotemark, escrito pelo próprio Wilson, em vez de repetir uma implementação.
+      No projeto, utilizamos o LUX\footnotemark{}, escrito pelo próprio Wilson, em vez de repetir uma implementação.
       
       \footnotetext{
-        Página do projeto: \url{https://github.com/Kazuo256/luxproject}
+        Página do projeto: \url{https://github.com/Kazuo256/luxproject} (última visita em 23/11/2013).
       }
     
     \subsubsection{Geração procedural de conteúdo}
       Para a geração dos mapas de cavernas, utilizamos o algorítimo de automato celular, descrito no RogueBasin,
-      \cite{website:roguebasin-cellularautomata} e levemente alterado para criar plataformas mais largas. Para
+      \cite{roguebasin:cellularautomata} e levemente alterado para criar plataformas mais largas. Para
       evitar problemas de áreas desconexas, há um tratamento posterior do mapa onde áreas desconexas são unidas.
       Por fim, procuramos por plataformas vazias onde popular com monstros e itens.

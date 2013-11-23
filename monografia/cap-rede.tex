@@ -33,7 +33,7 @@
   ASCII~'~', dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
 
   \subsection{Comandos}
-    Temos a seguir todos os comandos formais da rede, incluindo quais argmentos são esperados
+    Temos a seguir todos os comandos formais da rede, incluindo quais argumentos são esperados
     para cada um.
       
     \begin{itemize}
@@ -47,9 +47,8 @@
       \item REQUEST\_NODE\_LIST \\
         Requisição por informações de outros nós que pertencem à rede.
         
-        Ao receber esse comando, você deve decidir quantos nós você irá divulgar, e enviar a
-        resposta 'NODE\_LIST' informando tal quantidade, seguindo de um 'NODE\_INFO' para cada
-        nó a ser divulgado.
+        Sempre que um nó A receber esse comando, ele deve responder com diversos 'NODE\_INFO'.
+        Quantos e sobre quais nós fica a critério da implementação.
         
     \end{itemize}
   
@@ -71,6 +70,8 @@
     \end{itemize}
   
 \section{Implementação}
+  Uma implementação de exemplo foi realizada utilizando a linguagem de programação Lua, com biblioteca
+  LuaSocket.
   A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
   para poder ser utilizado com facilidade pelo \textit{vikings}, que é feito em Lua.
 
