@@ -1,10 +1,10 @@
-\chapter{Rede NOME}
+\chapter{Rede Etherclan}
 \label{sec:rede}
 
-\section{Rede Distribuída}
+\section{Arquitetura da Rede}
 \label{sec:rede:rede}
 
-  A rede NOME é composta por diversos nós conectados diretamente um nos outros, sem a necessidade
+  A rede Etherclan é composta por diversos nós conectados diretamente um nos outros, sem a necessidade
   de nenhum servidor centralizado.
   
   Para um programa usufruir dos recursos da rede, é necessário primeiro fazer parte da rede. Para 
@@ -27,72 +27,61 @@
     \subsubsection{Adicionar o nó na rede}
       Com o nó ativo, envie a mensagem 'ANNOUNCE\_SELF' para pelo menos 1 nó que faça parte da rede.
 
-  \subsection{Mensagens do Protocolo Padrão}
-    Mensagens são cadeias de caracteres codificadas em UTF-8, terminadas por uma quebra de linha
-    (caractere ASCII '\textbackslash n'). Uma mensagem pode ter 0 ou mais ocorrencias do caractere
-    ASCII~'~', dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
-    
-    \subsection{Comandos}
-      Temos a seguir todos os comandos formais da rede, incluindo quais argmentos são esperados
-      para cada um.
+\section{Protocolo}
+  Mensagens são cadeias de caracteres codificadas em UTF-8, terminadas por uma quebra de linha
+  (caractere ASCII '\textbackslash n'). Uma mensagem pode ter 0 ou mais ocorrências do caractere
+  ASCII~'~', dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
+
+  \subsection{Comandos}
+    Temos a seguir todos os comandos formais da rede, incluindo quais argmentos são esperados
+    para cada um.
+      
+    \begin{itemize}
+      \item ANNOUNCE\_SELF <UUID> <PORT> [<SERVICE1> [<SERVICE2> [...]]] \\
+        A origem do comando está anunciando que criou um novo nó, com o UUID enviado, que está
+        escutando no IP que utilizou para enviar a mensagem, na porta <PORT> e que conhece
+        os serviços <SERVICE1>, <SERVICE2>, ....
         
-      \begin{itemize}
-        \item ANNOUNCE\_SELF <UUID> <PORT> \\
-          A origem do comando está anunciando que criou um novo nó, com o UUID enviado e que está
-          escutando no IP que utilizou para enviar a mensagem, na porta <PORT>.
-          
-          Esse comando não possui resposta.
-      
-        \item REQUEST\_NODE\_LIST \\
-          Requisição por informações de outros nós que pertencem à rede.
-          
-          Ao receber esse comando, você deve decidir quantos nós você irá divulgar, e enviar a
-          resposta 'NODE\_LIST' informando tal quantidade, seguindo de um 'NODE\_INFO' para cada
-          nó a ser divulgado.
-          
-        \item REQUEST\_KNOWN\_SERVICES \\
-          Requisição de uma lista de serviços conhecidos por esse nó.
-          
-          Ao receber essa comando, você deve enviar a resposta 'KNOWN\_SERVICES', com as
-          informações corretas.
-          
-      \end{itemize}
-      
-    \subsection{Respostas}
-      Temos a seguir todos as respostas formais da rede.
-      
-      \begin{itemize}
-        \item UNKNOWN\_COMMAND \\
-          Enviada após receber algum comando desconhecido.
-          
-        \item INPUT\_ERROR \\
-          Enviada após receber um número incorreto de argumentos para algum comando, ou algum
-          argumento do tipo errado.
-      
-        \item NODE\_LIST <SIZE> \\
-          Informa que após essa mensagem, irá enviar mais SIZE mensagens do tipo 'NODE\_INFO'.
-          
-        \item NODE\_INFO <UUID> <IP> <PORT> \\
-          Informa que existe um nó com uuid <UUID> escutando em <IP>:<PORT>.
-          
-        \item KNOWN\_SERVICES [<SERVICE1> [<SERVICE2> [...]]] \\
-          Informa que conhece os serviços <SERVICE1>, <SERVICE2>, ... e irá responder aos
-          comandos descritos por tais serviços.
-      
-      \end{itemize}
-      
-  \subsection{Implementação}
-    A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
-    para poder ser utilizado com facilidade pelo \textit{vikings}, que é feito em Lua.
+        Esse comando não possui resposta.
+    
+      \item REQUEST\_NODE\_LIST \\
+        Requisição por informações de outros nós que pertencem à rede.
+        
+        Ao receber esse comando, você deve decidir quantos nós você irá divulgar, e enviar a
+        resposta 'NODE\_LIST' informando tal quantidade, seguindo de um 'NODE\_INFO' para cada
+        nó a ser divulgado.
+        
+    \end{itemize}
   
-  \subsection{Problemas}
-    \subsubsection{Bootstrap}
-      Na descrição do comando \textit{Anunciando novo nó}, foi dito que essa mensagem é enviada a
-      todos os nós conhecidos. Se é a primeira vez que rodamos o cliente numa máquina, quais são
-      esses nós?
-      
-      Ainda não achei nenhuma solução ótima para o problema. Até então, o plano é que cada software
-      que utiliza a rede tem uma lista fixa (\textit{hardcoded}) de nós inicias.
+  \subsection{Respostas}
+    Temos a seguir todos as respostas formais da rede.
+    
+    \begin{itemize}
+      \item UNKNOWN\_COMMAND \\
+        Pode ser enviada após receber algum comando desconhecido.
+        
+      \item INPUT\_ERROR \\
+        Pode ser enviada após receber um número incorreto de argumentos para algum comando, ou algum
+        argumento do tipo errado.
+    
+      \item NODE\_INFO <UUID> <IP> <PORT> [<SERVICE1> [<SERVICE2> [...]]] \\
+        Informa que existe um nó com uuid <UUID>, que conhece os serviços <SERVICE1>, <SERVICE2>, ...,
+        e está escutando em <IP>:<PORT>
+          
+    \end{itemize}
+  
+\section{Implementação}
+  A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
+  para poder ser utilizado com facilidade pelo \textit{vikings}, que é feito em Lua.
+
+\section{Problemas}
+  \subsection{Bootstrap}
+    Na descrição do comando \textit{Anunciando novo nó}, foi dito que essa mensagem é enviada a
+    todos os nós conhecidos. Se é a primeira vez que rodamos o cliente numa máquina, quais são
+    esses nós?
+    
+    Ainda não achei nenhuma solução ótima para o problema. Até então, o plano é que cada software
+    que utiliza a rede tem uma lista fixa (\textit{hardcoded}) de nós inicias.
 
 \section{Chat}
 \label{sec:rede:chat}
