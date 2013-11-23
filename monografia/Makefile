@@ -11,7 +11,7 @@ PDFLATEX  = pdflatex
 BIBTEX    = bibtex
 MAKEINDEX = makeindex
 
-CAPITULOS=cap-objetiva.tex cap-subjetiva.tex
+CAPITULOS=cap-conceitos.tex  cap-dificuldades.tex  cap-objetiva.tex  cap-rede.tex  cap-resultados.tex  cap-subjetiva.tex
 
 pdf: $(BASE_NAME).pdf
 ps: $(BASE_NAME).ps
