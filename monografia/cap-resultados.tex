@@ -37,6 +37,30 @@
     Fora isso, como as mensagens são enviadas de maneira síncrona utilizando TCP, cada nó
     inacessível acarreta em um atraso perceptível.
     
-
 \section{Vikings Multijogador}
 \label{sec:resultados:vikings}
+
+  \subsection{Objetivo}
+    Permitir que pelo menos dois jogadores se encontrem no mesmo mapa do \textit{vikings} e
+    interajam em tempo real um com o outro. O processo de encontrar um outro jogador deve se
+    passar inteiramente dentro do jogo, sem ter a necessidade de transferir informações como
+    endereços.
+    
+  \subsection{Implementação}
+    A busca de outros jogadores é realizada quando o jogador interage com um elemento do jogo,
+    que então mostra uma lista de jogos acessíveis. Ao selecionar um jogo, é feito a transferência
+    do mapa e de entidades do jogo, e então começa a sincronização de entrada com sincronização
+    do estado de jogo periódicas.
+    
+    \begin{figure}[h]
+      \centering
+      \includegraphics{imagens/vikings-signpost.png}
+      \caption{Objeto de acesso às funções multi-jogador}
+    \end{figure}
+    
+    \begin{figure}[h]
+      \centering
+      \includegraphics{imagens/vikings-multiplayer.png}
+      \caption{Dois jogadores no mesmo mapa simultaneamente}
+    \end{figure}
+

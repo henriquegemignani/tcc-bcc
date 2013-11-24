@@ -17,12 +17,13 @@ pdf: $(BASE_NAME).pdf
 ps: $(BASE_NAME).ps
 
 $(BASE_NAME).pdf: $(BASE_NAME).tex $(CAPITULOS)
-	$(PDFLATEX) $<
-	$(BIBTEX) $(BASE_NAME) 
-	$(MAKEINDEX) $(BASE_NAME) 
-	$(PDFLATEX) $< 
-	$(PDFLATEX) $<
-	$(PDFLATEX) $<
+	texify.exe --pdf --tex-option=-synctex=1 $<
+#	$(PDFLATEX) $<
+#	$(BIBTEX) $(BASE_NAME) 
+#	$(MAKEINDEX) $(BASE_NAME) 
+#	$(PDFLATEX) $< 
+#	$(PDFLATEX) $<
+#	$(PDFLATEX) $<
 
 $(BASE_NAME).ps: $(BASE_NAME).tex 
 	$(LATEX) $<
