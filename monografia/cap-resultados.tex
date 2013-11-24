@@ -4,5 +4,39 @@
 \section{Chat}
 \label{sec:resultados:chat}
 
+  \subsection{Objetivo}
+    Esse chat foi com o intuito de ser uma prova de conceito do funcionamento da rede.
+    Nele, um novo serviço chamado \textit{chat} seria adicionado, e a comunicação se daria
+    através de mensagens anônimas enviadas a todos os nós conhecidos.
+    
+  \subsection{Implementação}
+    O chat foi implementado utilizando o arcabouço \textit{LÖVE} para resolver o problema
+    de como exibir uma nova mensagem enquanto pega entrada do usuário, assim como utilizar
+    Lua para poder integrar com a implementação de exemplo do Etherclan.
+    
+    Referente às condições de uso do Etherclan, as seguintes escolhas foram realizadas:
+    \begin{enumerate}
+      \item Para bootstrap, temos um único IP/porta fixos no código.
+      \item Como critério de quando realizar uma busca, elas são realizadas sempre que o
+        usuário pressionar um botão.
+      \item Como critério de quando remover um nó, eles nunca são removidos.
+    \end{enumerate}
+    
+  \subsection{Resultado}
+    \begin{figure}[h]
+      \centering
+      \includegraphics{../slides/chat.png}
+      \caption{Parte visual do chat}
+    \end{figure}
+    
+    Como prova de conceito, o chat foi um sucesso. Depois das buscas, mensagens são enviadas
+    e recebidas com sucesso.
+    
+    Enquanto isso, na parte técnica, deixa muito a desejar. A \textit{LÖVE} não tem nenhuma
+    forma decente de pegar texto bem formatado do usuário, incluindo acentuação e formatação.
+    Fora isso, como as mensagens são enviadas de maneira síncrona utilizando TCP, cada nó
+    inacessível acarreta em um atraso perceptível.
+    
+
 \section{Vikings Multijogador}
 \label{sec:resultados:vikings}
