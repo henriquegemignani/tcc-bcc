@@ -1,8 +1,8 @@
 \chapter{Rede Etherclan}
-\label{sec:rede}
+\label{sec:etherclan}
 
 \section{Arquitetura da Rede}
-\label{sec:rede:rede}
+\label{sec:etherclan:rede}
 
   A rede Etherclan é composta por diversos nós conectados diretamente um nos outros, sem a necessidade
   de nenhum servidor centralizado.
@@ -50,6 +50,11 @@
         Sempre que um nó A receber esse comando, ele deve responder com diversos 'NODE\_INFO'.
         Quantos e sobre quais nós fica a critério da implementação.
         
+      \item KEEP\_ALIVE <ON ou OFF> \\
+        KEEP\_ALIVE ON indica que a conexão deve ser mantida aberta com o propósito de enviar
+        diversos comandos.
+        KEEP\_ALIVE OFF indica que a conexão deve ser fechada.
+        
     \end{itemize}
   
   \subsection{Respostas}
@@ -70,22 +75,40 @@
     \end{itemize}
   
 \section{Implementação}
-  Uma implementação de exemplo foi realizada utilizando a linguagem de programação Lua, com biblioteca
-  LuaSocket.
-  A implementação do protocolo deste trabalho será feita em Lua usando o LuaSocket, %TODO links
-  para poder ser utilizado com facilidade pelo \textit{vikings}, que é feito em Lua.
+  Uma implementação de exemplo foi realizada utilizando a linguagem de programação Lua, com
+  a biblioteca LuaSocket\footnotemark. A escolha por Lua se deve para facilitar a integração
+  com o \textit{vikings}.
+  
+  \footnotetext{
+    Página do projeto: \url{http://luasocket.luaforge.net/} (última visita em 23/11/2013).
+  }
 
 \section{Problemas}
   \subsection{Bootstrap}
-    Na descrição do comando \textit{Anunciando novo nó}, foi dito que essa mensagem é enviada a
-    todos os nós conhecidos. Se é a primeira vez que rodamos o cliente numa máquina, quais são
-    esses nós?
+    Dado o acesso a um conjunto de nós, é possível conseguir ainda mais nós para adicionar a esse
+    conjunto, permitindo que o processo continue. Logo, para iniciar o processo, é necessário
+    conhecer pelo menos 1 nó, como descrito em \ref{sec:etherclan:rede}. Isso é conhecido como
+    bootstrapping \cite{tech:bootstrapping}.
     
-    Ainda não achei nenhuma solução ótima para o problema. Até então, o plano é que cada software
-    que utiliza a rede tem uma lista fixa (\textit{hardcoded}) de nós inicias.
-
-\section{Chat}
-\label{sec:rede:chat}
-
-\section{Vikings Multijogador}
-\label{sec:rede:vikings}
+    Nisso, chegamos num problema: como conseguir esse primeiro nó?
+    
+    Não foi possível achar nenhuma solução ótima para esse problema, nem mesmo achar como que outras
+    redes similares lidam com esse problema.
+    
+    A solução adotada na implementação de exemplo foi requisitar do software que utilizar a rede uma
+    lista de nós. Nos casos de uso, essas listas eram fixas.
+    
+  \subsection{Estratégias de busca e gerenciamento de nós conhecidos}
+    A ideia original era que o gerenciamento de nós conhecidos, assim como critérios de como e
+    quando realizar as buscas era de responsabilidade da implementação, pois acreditava que não
+    seria tão importante ter bem definido essa parte, e deixar livre para implementações decidirem
+    por algorítimos elaborados.
+    
+    Durante a implementação da primeira prova de conceito, tornou-se óbvio que sem bons critérios
+    escolhidos nessas áreas, a rede pode chegar a não funcionar. Alguns problemas:
+    \begin{enumerate}
+      \item Sobre quando e como realizar buscas, é possível que alguns nós não sejam encontrados e
+        que se gaste muito tempo realizando buscas desnecessárias.
+      \item Sobre quando remover um nó, um nó inacessível degrada o desempenho das outras operações,
+        enquanto esquecer nós demais pode tornar a rede desconexa.
+    \end{enumerate}
