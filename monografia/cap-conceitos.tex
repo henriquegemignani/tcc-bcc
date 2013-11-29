@@ -27,14 +27,31 @@
       puramente econômicas, e não dependem das escolhas feitas para os clientes.
       
   \subsection{Integração}
-    Tendo as duas partes separadas, elas não precisam ficar inteiramente separadas.
+    Tendo as duas partes separadas, elas não precisam ficar inteiramente separadas. As formas
+    listadas a seguir são todas utilizadas por algum jogo comercial, com casos de mais de uma no
+    mesmo jogo.
+    
+    \begin{enumerate}
+      \item Acesso a um \textit{lobby} único, onde jogadores podem conversar um com os outros e
+        procurar por partidas abertas e em andamento ou criar uma nova.
+      \item Acesso a um serviço de \textit{matchmaking}, que encontra outros jogadores utilizando
+        o mesmo serviço e cria uma partida para eles automaticamente.
+      \item Acesso a uma lista de servidores dedicados cadastrados ao servidor central.
+    \end{enumerate}
+    
+    Jogos recentes tendem a utilizar o item 2 exclusivamente, exemplos sendo \textit{Call of Duty:
+    Modern Warfare 2} e \textit{Diablo III}, enquanto jogos antigos utilizavam as outras opções,
+    como o item 1 em \textit{Diablo II} e o item 3 em \textit{Team Fortress 2}. Houve um claro
+    avanço de preferir o item 2, com \textit{Warcraft III} tendo o item 1 e 2, e uma atualização
+    recente de \textit{Team Fortress 2} introduziu o item 2.
     
   \subsection{Comunidade}
     Uma forma que algumas empresas de colaborar com a comunidade de um jogo é de além de
     distribuir o cliente do jogo, distribuir um software para realizar exclusivamente a parte
     do servidor. Com acesso a esse software, chamado de \textit{servidor dedicado}, a comunidade
     pode por si só criar a manter servidores, que podem ser melhores que os oficiais para casos
-    específicos
+    específicos. Exemplos de uso do servidor dedicado seria um servidor local para um torneio, 
+    diminuindo a latência nas partidas, e removendo a dependência de uma conexão com a Internet.
 
 \section{Redes Peer-to-peer}
 \label{sec:conceitos:redes}
@@ -52,6 +69,8 @@
   onde cada nó individual da rede atuam como consumidores e fornecedores de recursos,
   simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
   requisitam serviços fornecidos por servidores centrais. \cite{peertopeer:definition}
+  
+  % TODO falar sobre bittorrent
 
 \section{Vikings}
 \label{sec:conceitos:vikings}
