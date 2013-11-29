@@ -1,13 +1,57 @@
 \chapter{Conceitos Básicos}
 \label{sec:conceitos}
 
-\section{Servidores e listas de servidores em jogos eletrônicos}
+\section{Arquitetura de um jogo eletrônico multijogador com servidor central}
 \label{sec:conceitos:servidores}
-    TODO
+  Para quesito de comparação, é razoável termos em mente como se estrutura um jogo usual.
+    
+  \subsection{Separação do código}
+    Um software cuja arquitetura de redes inclui um servidor central possui uma separação
+    clara e bem definida de como um \textit{cliente} e um \textit{servidor} devem agir.
+    
+    \subsubsection{Software cliente}
+      O software cliente é a parte que irá ser executada pelo público alvo do jogo, e é o que
+      pode ser considerado como o "jogo em si". As escolhas de qual linguagem e/ou quais arcabouços
+      utilizar, quais sistemas operacionais ou plataformas contemplar são todas realizadas em
+      função do público alvo.
+      Como jogos são interativos, essa parte sempre tem uma exigência de um ambiente gráfico,
+      assim como uma placa de vídeo.
+      
+    \subsubsection{Software servidor}
+      O software servidor é visado em um público mais técnico, podendo até mesmo ser restrito dentro
+      da empresa. O objetivo principal do servidor é permitir que diversos clientes consigam manter
+      suas simulações do mundo do jogo em sincronia. Para tal, a sincronização pode ser desde
+      apenas sincronizar entrada, como até mesmo ser o único responsável pela simulação, tornando
+      os clientes em apenas terminais burros.
+      Em contraste com os clientes, as escolhas de linguagem, arcabouços, plataformas e outros são
+      puramente econômicas, e não dependem das escolhas feitas para os clientes.
+      
+  \subsection{Integração}
+    Tendo as duas partes separadas, elas não precisam ficar inteiramente separadas.
+    
+  \subsection{Comunidade}
+    Uma forma que algumas empresas de colaborar com a comunidade de um jogo é de além de
+    distribuir o cliente do jogo, distribuir um software para realizar exclusivamente a parte
+    do servidor. Com acesso a esse software, chamado de \textit{servidor dedicado}, a comunidade
+    pode por si só criar a manter servidores, que podem ser melhores que os oficiais para casos
+    específicos
 
-\section{Redes Distribuídas}
+\section{Redes Peer-to-peer}
 \label{sec:conceitos:redes}
-    TODO
+
+  \begin{figure}[h]
+    \begin{centering}
+    \fbox{\includegraphics[width=0.45\textwidth]{../poster/p2p-network.png}}
+    \fbox{\includegraphics[width=0.45\textwidth]{../poster/server-based-network.png}}
+    \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita). \\
+      Fonte: Baseado em figura de Wikimedia Commons}
+    \end{centering}
+  \end{figure}
+
+  Uma rede peer-to-peer é um tipo de arquitetura de rede descentralizada e distribuída
+  onde cada nó individual da rede atuam como consumidores e fornecedores de recursos,
+  simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
+  requisitam serviços fornecidos por servidores centrais. \cite{peertopeer:definition}
 
 \section{Vikings}
 \label{sec:conceitos:vikings}

@@ -16,7 +16,7 @@ CAPITULOS=cap-conceitos.tex  cap-dificuldades.tex  cap-objetiva.tex  cap-rede.te
 pdf: $(BASE_NAME).pdf
 ps: $(BASE_NAME).ps
 
-$(BASE_NAME).pdf: $(BASE_NAME).tex $(CAPITULOS)
+$(BASE_NAME).pdf: $(BASE_NAME).tex $(CAPITULOS) bibliografia.bib
 	texify.exe --pdf --tex-option=-synctex=1 $<
 #	$(PDFLATEX) $<
 #	$(BIBTEX) $(BASE_NAME) 
@@ -34,7 +34,7 @@ $(BASE_NAME).ps: $(BASE_NAME).tex
 	$(LATEX) $<
 	
 clean:
-	rm -f $(BASE_NAME)*.ps $(BASE_NAME)*.dvi *.log \
+	del $(BASE_NAME)*.ps $(BASE_NAME)*.dvi *.log \
 	      *.aux *.blg *.toc *.brf *.ilg *.ind \
 	      missfont.log $(BASE_NAME)*.bbl $(BASE_NAME)*.pdf $(BASE_NAME)*.out \
 		  $(BASE_NAME)*.lof $(BASE_NAME)*.lot 
