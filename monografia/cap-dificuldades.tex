@@ -1,4 +1,24 @@
 \chapter{Conclusões}
 \label{sec:conclusoes}
 
-TODO falar pq não funfou...
+Com a implementação da rede e os dois usos, o que pode ser dito sobre a proposta?
+
+Um ponto importante de notar é que o resultado funciona. É possível encontrar outros usuários
+através da rede e trocar algumas mensagens. Mas infelizmente, as boas notícias terminam aí.
+Subestimar a importância de critérios bem definidos para busca e gerenciamento de nós conhecidos
+elimina qualquer esperança de que a rede tenha performance satisfatória em algum ambiente de
+produção. 
+
+Não só isso, mas burlar NATs quando se utiliza TCP é bem mais complexo que usando UDP
+(vide RFC5128 \cite{rfc5128}), além de que utilizar exclusivamente TCP remove a opção de poder
+enviar pacotes 'leves' que o UDP permite.
+
+Finalmente, além de tudo dito anteriormente, ao implementar o modo multijogador do vikings ficou
+claro que a possibilidade de permitir que dois peers enviem e recebam mensagens arbitrárias
+utilizando a infraestrutura do Etherclan é algo bem conveniente. Em outras palavras, oficializar
+que o Etherclan é uma rede sobreposta (\textit{overlay network}) e permitir se use e abuse desse
+fato.
+
+\section{Trabalhos Futuros}
+
+Com tudo isso em mente, 

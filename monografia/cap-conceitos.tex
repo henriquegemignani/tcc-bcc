@@ -70,7 +70,15 @@
   simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
   requisitam serviços fornecidos por servidores centrais. \cite{peertopeer:definition}
   
-  % TODO falar sobre bittorrent
+  O exemplo mais famoso de uma rede peer-to-peer é o BitTorrent. Nela, um usuário utiliza um
+  arquivo de meta-dados \textit{.torrent} para conhecer um servidor responsável pelo arquivos
+  chamado \textit{tracker} e dados sobre os arquivos. O cliente se anuncia para o \textit{tracker} que
+  por sua vez informa o cliente de outros peers que estão trabalhando com o mesmo \textit{.torrent}.
+  
+  Uma extensão adicionada posteriormente ao BitTorrent é a tabela de hash distribuída (DHT).
+  A DHT é uma forma de remover a necessidade dos \textit{trackers}, utilizando uma rede distribuída
+  para encontrar os peers diretamente. Essa rede é bem relevante para esse projeto pois tem um
+  objetivo e implementação bastante similar ao proposto.
 
 \section{Vikings}
 \label{sec:conceitos:vikings}
