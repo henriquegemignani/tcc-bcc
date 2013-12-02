@@ -7,14 +7,20 @@
 
   \begin{enumerate}
     \item Problemas em como começar a organizar a monografia, por falta de experiencia em
-      usar LaTeX para algo além de alguns slides.
+      usar \LaTeX{} para algo além de alguns slides.
     
-    \item O sistemas de threads da LÖVE é bem limitado, forçando a implementação do cliente da rede a usar
-      as co-rotinas do Lua, que é um sistema de \textit{fluxos de execução colaborativos}.
+    \item O sistemas de threads da LÖVE é bem limitado, forçando a implementação do cliente da rede
+      a usar as co-rotinas do Lua, que é um sistema de \textit{fluxos de execução colaborativos}.
+      Mesmo assim, operações que travam o fluxo de operações continuam causando problemas.
     
     \item Gastar mais de um mês tentando prever todas as necessidades do protocolo e ficar travado nisso.
     
-    \item NAT atrapalha tudo
+    \item NAT atrapalha tudo. Não consegui testar em nenhum ambiente complexo como, por exemplo,
+      utilizar o Chat através da Internet com amigos.
+
+    \item Problemas de conflito de horário da matéria de Programação para Redes de Computadores com
+      a minha grade horária, em particular com Álgebra II e Sistemas Operacionais, que me impediram de
+      fazer essa matéria por dois anos seguidos...
   \end{enumerate}
 
 \chapter{Relação entre o trabalho de formatura e disciplinas do BCC}
@@ -22,19 +28,40 @@
 \newcommand\materia[3]{\noindent \textbf{#1} - \texttt{#2}\\\indent #3\vspace{0.5cm}\\}
 
 \materia{MAC0122}{Princípios de Desenvolvimento de Algoritmos}{
-    DERP.
+  Aprendi a programar em C e a gerenciar memória! Um começo para tudo que veio depois :)
 }
-\materia{MAC0XXX}{XP}{
-    DERP.
+\materia{MAC0342}{Laboratório de Programação Extrema}{
+  Matéria que melhor ensinou os princípios da metodologia ágil, além de fornecer um ambiente
+  amigável para trabalhar em projetos grandes e estabelecidos.
 }
-\materia{MAC0XXX}{Conceitos}{
-    DERP.
+\materia{MAC0316}{Conceitos Fundamentais de Linguagens de Programação}{
+  Introduziu o paradigma de programação funcional, que traz conceitos úteis mesmo quando não se
+  utiliza uma linguagem de programação funcional.
+}
+\materia{MAC0448}{Programação para Redes de Computadores}{
+  Mesmo tendo feito um semestre depois de começar o TCC, experiências que tive durante a matéria
+  me ajudaram a organizar o código do TCC.
 }
 \materia{USPGD001}{USPGameDev}{
-    DERP.
+  Não é exatamente uma disciplina, mas o USPGameDev foi a parte da minha vida acadêmica que teve
+  a maior influência no meu aprendizado. No começo, havia veteranos para nos guiar. Ao longo dos
+  anos, tivemos experiência com softwares de controle de versão, portabilidade de código,
+  fazendo lançamentos, apresentações.
+
+  PS: A sigla dessa 'matéria' veio do fórum do paca\footnotemark{} do grupo.
+}
+
+\footnotetext{
+   Link: \url{http://paca.ime.usp.br/course/view.php?id=431} (Última visita: 02/12/2013)
 }
 
 \chapter{Próximos passos}
 \label{sec:proximos_passos}
 
-TODO
+Pretendo continuar com o projeto, seguindo o plano descrito na seção \ref{sec:conclusoes:futuro}.
+No USPGameDev, planejamos começar um novo projeto em Dezembro de 2013 que utilizará o Etherclan para
+a parte multijogador, dessa vez planejando multijogador desde o princípio.
+
+
+
+

@@ -23,7 +23,7 @@
 \usepackage[nottoc]{tocbibind}          % acrescentamos a bibliografia/indice/conteudo no Table of Contents
 \usepackage{courier}                    % usa o Adobe Courier no lugar de Computer Modern Typewriter
 \usepackage{type1cm}                    % fontes realmente escaláveis
-\usepackage{listings}                   % para formatar código-fonte (ex. em Java)
+%\usepackage{listings}                   % para formatar código-fonte (ex. em Java)
 \usepackage{titletoc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -57,35 +57,6 @@
 \fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
 \cleardoublepage
 \normalsize
-
-% ---------------------------------------------------------------------------- %
-% Opções de listing usados para o código fonte
-% Ref: http://en.wikibooks.org/wiki/LaTeX/Packages/Listings
-\lstset{ %
-language=Java,                   % choose the language of the code
-basicstyle=\footnotesize,       % the size of the fonts that are used for the code
-numbers=left,                   % where to put the line-numbers
-numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
-stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
-numbersep=5pt,                  % how far the line-numbers are from the code
-showspaces=false,               % show spaces adding particular underscores
-showstringspaces=false,         % underline spaces within strings
-showtabs=false,                 % show tabs within strings adding particular underscores
-frame=single,                   % adds a frame around the code
-framerule=0.6pt,
-tabsize=2,                      % sets default tabsize to 2 spaces
-captionpos=b,                   % sets the caption-position to bottom
-breaklines=true,                % sets automatic line breaking
-breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
-escapeinside={\%*}{*)},         % if you want to add a comment within your code
-backgroundcolor=\color[rgb]{1.0,1.0,1.0}, % choose the background color.
-rulecolor=\color[rgb]{0.8,0.8,0.8},
-extendedchars=true,
-xleftmargin=10pt,
-xrightmargin=10pt,
-framexleftmargin=10pt,
-framexrightmargin=10pt
-}
 
 % ---------------------------------------------------------------------------- %
 % Corpo do texto
@@ -134,7 +105,17 @@ framexrightmargin=10pt
 % Agradecimentos
 \chapter*{Agradecimentos}
 
-TODO
+Primeiro de tudo, gostaria de agradecer ao meu orientador, o professor Daniel
+Batista, por me apoiar durante esse projeto e me cobrar simplesmente perguntando
+como anda o projeto.
+
+Além disso, sou grato pela Rede Linux e por todos que contribuíram para que ela seja 
+o que é hoje, permitindo que eu também pudesse fazer a minha parte.
+Sou grato ao USPGameDev e todos os meus amigos e colegas que mantiveram esse grupo
+vivo todos esses anos.
+
+E, finalmente, a todos que colaboram em manter a atmosfera amigável do IME.
+
 
 % ---------------------------------------------------------------------------- %
 % Resumo
