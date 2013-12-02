@@ -1,6 +1,8 @@
 \chapter{Rede Etherclan}
 \label{sec:etherclan}
 
+Este capítulo apresenta a principal contribuíção deste TCC, a rede Etherclan.
+
 \section{Arquitetura da Rede}
 \label{sec:etherclan:rede}
 
@@ -19,30 +21,42 @@
     \subsubsection{O que é um nó}
       Todo nó deve possuir um UUIDv4 próprio.
       Para um nó ser considerado ativo, deve-se escutar em alguma porta TCP qualquer e responder às
-      mensagens recebidas.
+      mensagens recebidas. Identificadores universalmente únicos (\textit{Universally unique identifier},
+      UUID), definidos pelo RFC4122 \cite{rfc4122}, são números de 128 bits construídos de maneira a
+      serem praticamente únicos.
       
     \subsubsection{Processo de criação de um nó ativo}
-      Deve-se gerar um UUIDv4, e criar um socket para dar listen.
+      Deve-se gerar um UUIDv4, e criar um socket com a opção de \textit{listen} habilitada.
 
     \subsubsection{Adicionar o nó na rede}
-      Com o nó ativo, envie a mensagem 'ANNOUNCE\_SELF' para pelo menos 1 nó que faça parte da rede.
+      Com o nó ativo, basta enviar a mensagem 'ANNOUNCE\_SELF' para pelo menos 1 nó que faça parte da rede.
 
 \section{Protocolo}
-  Mensagens são cadeias de caracteres codificadas em UTF-8, terminadas por uma quebra de linha
-  (caractere ASCII '\textbackslash n'). Uma mensagem pode ter 0 ou mais ocorrências do caractere
-  ASCII~'~', dividindo a mensagem em um comando seguindo de 0 ou mais argumentos.
+\label{sec:etherclan:protocolo}
+  Na rede Etherclan, as mensagens trocadas pelos nós são cadeias de caracteres codificadas em UTF-8,
+  terminadas por uma quebra de linha (caractere ASCII '\textbackslash n'). Uma mensagem pode ter 0
+  ou mais ocorrências do caractere  ASCII~'~', dividindo a mensagem em um comando seguido de 0 ou
+  mais argumentos.
 
   \subsection{Comandos}
-    Temos a seguir todos os comandos formais da rede, incluindo quais argumentos são esperados
+  \label{sec:etherclan:protocolo:comandos}
+    Temos a seguir todos os comandos da rede, incluindo quais argumentos são esperados
     para cada um.
       
     \begin{itemize}
       \item ANNOUNCE\_SELF <UUID> <PORT> [<SERVICE1> [<SERVICE2> [...]]] \\
-        A origem do comando está anunciando que criou um novo nó, com o UUID enviado, que está
-        escutando no IP que utilizou para enviar a mensagem, na porta <PORT> e que conhece
-        os serviços <SERVICE1>, <SERVICE2>, ....
+        O computador que envia este comando está anunciando que criou um novo nó, com o UUID enviado,
+        que está escutando no endereço IP que utilizou para enviar a mensagem, na porta <PORT> e que
+        conhece os serviços <SERVICE1>, <SERVICE2>, ...
         
         Esse comando não possui resposta.
+    
+      \item SERVICE <NAME> ... \\
+        Comando que deve ser tratado utilizando o serviço de nome <NAME>.
+        
+        Serviços são extensões da rede que podem fornecer recursos adicionais, além de servirem
+        para identificar a qual software o nó pertence.
+        A resposta desse comando é definido pelo serviço.
     
       \item REQUEST\_NODE\_LIST \\
         Requisição por informações de outros nós que pertencem à rede.
@@ -58,14 +72,15 @@
     \end{itemize}
   
   \subsection{Respostas}
-    Temos a seguir todos as respostas formais da rede.
+    Temos a seguir todos as respostas que podem ser enviadas às mensagens apresentadas na subseção
+    \ref{sec:etherclan:protocolo:comandos}.
     
     \begin{itemize}
       \item UNKNOWN\_COMMAND \\
-        Pode ser enviada após receber algum comando desconhecido.
+        Enviada após receber algum comando desconhecido.
         
       \item INPUT\_ERROR \\
-        Pode ser enviada após receber um número incorreto de argumentos para algum comando, ou algum
+        Enviada após receber um número incorreto de argumentos para algum comando, ou algum
         argumento do tipo errado.
     
       \item NODE\_INFO <UUID> <IP> <PORT> [<SERVICE1> [<SERVICE2> [...]]] \\
@@ -77,7 +92,7 @@
 \section{Implementação}
   Uma implementação de exemplo foi realizada utilizando a linguagem de programação Lua, com
   a biblioteca LuaSocket\footnotemark. A escolha por Lua se deve para facilitar a integração
-  com o \textit{vikings}.
+  com o \textit{vikings}. A implementação está disponível em \url{https://github.com/henriquegemignani/etherclan}.
   
   \footnotetext{
     Página do projeto: \url{http://luasocket.luaforge.net/} (última visita em 23/11/2013).
@@ -87,7 +102,7 @@
   \subsection{Bootstrap}
     Dado o acesso a um conjunto de nós, é possível conseguir ainda mais nós para adicionar a esse
     conjunto, permitindo que o processo continue. Logo, para iniciar o processo, é necessário
-    conhecer pelo menos 1 nó, como descrito em \ref{sec:etherclan:rede}. Isso é conhecido como
+    conhecer pelo menos 1 nó, como descrito na seção \ref{sec:etherclan:rede}. Isso é conhecido como
     bootstrapping \cite{tech:bootstrapping}.
     
     Nisso, chegamos num problema: como conseguir esse primeiro nó?
@@ -100,9 +115,9 @@
     
   \subsection{Estratégias de busca e gerenciamento de nós conhecidos}
     A ideia original era que o gerenciamento de nós conhecidos, assim como critérios de como e
-    quando realizar as buscas era de responsabilidade da implementação, pois acreditava que não
-    seria tão importante ter bem definido essa parte, e deixar livre para implementações decidirem
-    por algorítimos elaborados.
+    quando realizar as buscas era de responsabilidade da implementação, pois acreditava-se que não
+    seria tão importante ter bem definido essa parte, e deixando para implementações decidirem
+    por algoritmos elaborados.
     
     Durante a implementação da primeira prova de conceito, tornou-se óbvio que sem bons critérios
     escolhidos nessas áreas, a rede pode chegar a não funcionar. Alguns problemas:

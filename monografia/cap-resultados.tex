@@ -1,11 +1,11 @@
-\chapter{Resultados}
-\label{sec:resultados}
+\chapter{Experimentos}
+\label{sec:experimentos}
 
 \section{Chat}
-\label{sec:resultados:chat}
+\label{sec:experimentos:chat}
 
   \subsection{Objetivo}
-    Esse chat foi com o intuito de ser uma prova de conceito do funcionamento da rede.
+    Um chat foi implementado com o intuito de ser uma prova de conceito do funcionamento da rede.
     Nele, um novo serviço chamado \textit{chat} seria adicionado, e a comunicação se daria
     através de mensagens anônimas enviadas a todos os nós conhecidos.
     
@@ -14,7 +14,7 @@
     de como exibir uma nova mensagem enquanto pega entrada do usuário, assim como utilizar
     Lua para poder integrar com a implementação de exemplo do Etherclan.
     
-    Referente às condições de uso do Etherclan, as seguintes escolhas foram realizadas:
+    Referente às condições de uso do Etherclan, as seguintes decisões de projeto foram realizadas:
     \begin{enumerate}
       \item Para bootstrap, temos um único IP/porta fixos no código.
       \item Como critério de quando realizar uma busca, elas são realizadas sempre que o
@@ -32,13 +32,13 @@
     Como prova de conceito, o chat foi um sucesso. Depois das buscas, mensagens são enviadas
     e recebidas com sucesso.
     
-    Enquanto isso, na parte técnica, deixa muito a desejar. A \textit{LÖVE} não tem nenhuma
-    forma decente de pegar texto bem formatado do usuário, incluindo acentuação e formatação.
-    Fora isso, como as mensagens são enviadas de maneira síncrona utilizando TCP, cada nó
-    inacessível acarreta em um atraso perceptível.
+    Entretanto, alguns detalhes técnicos claramente precisam de melhorias pois \textit{LÖVE} não
+    tem nenhuma forma bem trabalhada para pegar texto bem formatado do usuário, incluindo
+    acentuação e formatação. Fora isso, como as mensagens são enviadas de maneira síncrona
+    utilizando TCP, cada nó inacessível acarreta em um atraso perceptível.
     
 \section{Vikings Multijogador}
-\label{sec:resultados:vikings}
+\label{sec:experimentos:vikings}
 
   \subsection{Objetivo}
     Permitir que pelo menos dois jogadores se encontrem no mesmo mapa do \textit{vikings} e
@@ -65,9 +65,9 @@
       \caption{Dois jogadores no mesmo mapa simultaneamente}
     \end{figure}
   
-    Encontrar outros jogadores funciona, e a transferência de mapa funciona. Sincronia de estado do
-    jogo não está boa e perdas de sincronia entre os jogadores acontecem com frequência.
+    Encontrar outros jogadores funciona, e a transferência de mapa funciona. A sincronia de estado do
+    jogo ainda precisa de melhorias pois perdas de sincronia entre os jogadores acontecem com frequência.
     
-    Na parte técnica, a estrutura do Etherclan para comunicação direta entre peers deixou a desejar,
-    com problemas de identificar a origem das mensagens, assim como enviar e mandar mensagens com
-    baixo custo adicional (utilizando UDP por exemplo).
+    Na parte técnica, a estrutura do Etherclan para comunicação direta entre peers também precisa
+    de melhorias, pois há problemas para identificar a origem das mensagens, assim como enviar
+    mensagens com baixo custo adicional (utilizando UDP por exemplo).

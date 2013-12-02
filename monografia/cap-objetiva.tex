@@ -6,11 +6,11 @@
 
 Desenvolvedores de jogos sempre tentaram introduzir formas de que diversas
 pessoas possam se divertir com um jogo simultaneamente. Em jogos como o Pong
-clássico, a tela era compartilhada e tinha controles separados para cada
+clássico, a tela era compartilhada e tinha controles separados para cada 
 jogador. Outra opção, era dividir a tela em duas (ou mais), uma para cada
-jogador. Tais soluções eram viáveis em jogos para consoles, que era comum poder
-utilizar dois ou mais controles, mas jogos para computadores normalmente usam
-teclado e mouse, o que não é comum ter mais de um par em uma máquina.
+jogador. Tais soluções eram viáveis em jogos para consoles, em que era comum
+poder utilizar dois ou mais controles, mas jogos para computadores normalmente
+usam teclado e mouse, periféricos que raramente existem em duplicidade.
 Apesar disso, o que é de fato comum no ambiente de computadores, é cada um ter
 a sua própria máquina. Com isso em mente, jogos utilizavam de quaisquer recursos
 de comunicação entre máquinas existentes, desde comunicação direta com modens
@@ -20,10 +20,10 @@ Com a popularidade da Internet e do TCP/IP, se tornou cada vez mais fácil
 jogadores se conectarem remotamente. Comunidades se formaram para facilitar
 encontrar outros jogadores, montar campeonatos, guildas e conversar. Empresas
 adotaram essa ideia de comunidades, criando comunidades oficiais, com integração
-direta com os jogos, como a Battle.net e Gamespy, facilitando a todo e ainda
-permitindo novas funcionalidades, como \textit{matchmaking} baseado em nível de
-habilidade e proteção anti-trapaças. No entanto, tais funcionalidades dependiam
-de um ser servidor principal mantido pela empresa responsável pelo jogo.
+direta com os jogos, como a Battle.net e Gamespy, facilitando todos os usuários 
+e ainda permitindo novas funcionalidades, como \textit{matchmaking} baseado em
+nível de habilidade e proteção anti-trapaças. No entanto, tais funcionalidades
+dependiam de um servidor principal mantido pela empresa responsável pelo jogo.
 
 Quando você está lidando com um projeto de um jogo eletrônico com um baixo
 orçamento, como por exemplo um jogo independente ou um software livre, não é
@@ -33,10 +33,9 @@ multijogador online.
 \section{Motivações}
 \label{sec:intr:motivacoes}
 
-Seria interessante se tivesse como que cada jogador fosse capaz de encontrar
-outros clientes sem a necessidade de um servidor central, permitindo prover
-boa parte, se não mesmo todas, as funcionalidades frequentemente encontradas
-em jogos comerciais.
+Seria interessante que cada jogador fosse capaz de encontrar outros clientes
+sem a necessidade de um servidor central, permitindo prover boa parte, se não
+mesmo todas, as funcionalidades frequentemente encontradas em jogos comerciais.
 
 Além disso, a possibilidade de não só expandir o jogo \textit{vikings}, mas como
 desenvolver um modo multijogador é algo que sempre me interessou, e poder
@@ -46,8 +45,10 @@ projeto como o meu trabalho de conclusão de curso.
 \section{Objetivos}
 \label{sec:intr:objetivos}
 
+Esse trabalho de conclusão de curso tem como objetivos:
+
 \begin{enumerate}
-  \item Uma rede distribuída, incluindo definir o protocolo e uma implementação deste com capacidade de 
+  \item Desenvolver uma rede distribuída, incluindo definir o protocolo e uma implementação deste com capacidade de 
     buscar novos nós, armazenar os conhecidos e ter politicas para remover nós.
     
   \item Adaptação do jogo \textit{vikings} para utilizar recursos multijogador via rede, incluindo partidas

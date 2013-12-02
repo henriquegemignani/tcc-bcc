@@ -1,6 +1,9 @@
 \chapter{Conceitos Básicos}
 \label{sec:conceitos}
 
+Esse capítulo revisa alguns conceitos básicos relacionados com jogos eletrônicos, tópico
+principal deste TCC.
+
 \section{Arquitetura de um jogo eletrônico multijogador com servidor central}
 \label{sec:conceitos:servidores}
   Para quesito de comparação, é razoável termos em mente como se estrutura um jogo usual.
@@ -14,15 +17,18 @@
       pode ser considerado como o "jogo em si". As escolhas de qual linguagem e/ou quais arcabouços
       utilizar, quais sistemas operacionais ou plataformas contemplar são todas realizadas em
       função do público alvo.
+      
       Como jogos são interativos, essa parte sempre tem uma exigência de um ambiente gráfico,
-      assim como uma placa de vídeo.
+      assim como uma placa de vídeo, na grande maioria das vezes com aceleração gráfica embutida em
+      hardware.
       
     \subsubsection{Software servidor}
       O software servidor é visado em um público mais técnico, podendo até mesmo ser restrito dentro
       da empresa. O objetivo principal do servidor é permitir que diversos clientes consigam manter
-      suas simulações do mundo do jogo em sincronia. Para tal, a sincronização pode ser desde
-      apenas sincronizar entrada, como até mesmo ser o único responsável pela simulação, tornando
-      os clientes em apenas terminais burros.
+      suas simulações do mundo do jogo em sincronia. Para tal, a sincronização pode ser desde apenas
+      sincronizar entrada, como até mesmo ser o único responsável pela simulação, transformando os
+      clientes em terminais burros.
+      
       Em contraste com os clientes, as escolhas de linguagem, arcabouços, plataformas e outros são
       puramente econômicas, e não dependem das escolhas feitas para os clientes.
       
@@ -40,15 +46,34 @@
     \end{enumerate}
     
     Jogos recentes tendem a utilizar o item 2 exclusivamente, exemplos sendo \textit{Call of Duty:
-    Modern Warfare 2} e \textit{Diablo III}, enquanto jogos antigos utilizavam as outras opções,
-    como o item 1 em \textit{Diablo II} e o item 3 em \textit{Team Fortress 2}. Houve um claro
-    avanço de preferir o item 2, com \textit{Warcraft III} tendo o item 1 e 2, e uma atualização
-    recente de \textit{Team Fortress 2} introduziu o item 2.
+    Modern Warfare 2\footnotemark{}} e \textit{Diablo III\footnotemark{}}, enquanto jogos antigos
+    utilizavam as outras opções, como o item 1 em \textit{Diablo II\footnotemark{}} e o item 3 em
+    \textit{Team Fortress 2\footnotemark{}}. Houve um claro avanço de preferir o item 2, com 
+    \textit{Warcraft III\footnotemark{}} tendo o item 1 e 2, e uma atualização recente de 
+    \textit{Team Fortress 2} introduziu o item 2.
+    
+    \addtocounter{footnote}{-5}
+
+    \stepcounter{footnote}\footnotetext{
+      Página da franquia: \url{http://www.callofduty.com/} (última visita em 01/12/2013).
+    }
+    \stepcounter{footnote}\footnotetext{
+      Página oficial: \url{http://us.battle.net/d3/pt/} (última visita em 01/12/2013).
+    }
+    \stepcounter{footnote}\footnotetext{
+      Página oficial: \url{http://us.blizzard.com/en-us/games/d2/} (última visita em 01/12/2013).
+    }
+    \stepcounter{footnote}\footnotetext{
+      Página oficial: \url{http://www.teamfortress.com/} (última visita em 01/12/2013).
+    }
+    \stepcounter{footnote}\footnotetext{
+      Página oficial: \url{http://us.blizzard.com/en-us/games/war3/} (última visita em 01/12/2013).
+    }
     
   \subsection{Comunidade}
-    Uma forma que algumas empresas de colaborar com a comunidade de um jogo é de além de
+    Uma forma que algumas empresas usam para colaborar com a comunidade de um jogo é de, além de
     distribuir o cliente do jogo, distribuir um software para realizar exclusivamente a parte
-    do servidor. Com acesso a esse software, chamado de \textit{servidor dedicado}, a comunidade
+    do servidor. Com acesso e esse software, chamado de \textit{servidor dedicado}, a comunidade
     pode por si só criar a manter servidores, que podem ser melhores que os oficiais para casos
     específicos. Exemplos de uso do servidor dedicado seria um servidor local para um torneio, 
     diminuindo a latência nas partidas, e removendo a dependência de uma conexão com a Internet.
@@ -61,12 +86,14 @@
     \fbox{\includegraphics[width=0.45\textwidth]{../poster/p2p-network.png}}
     \fbox{\includegraphics[width=0.45\textwidth]{../poster/server-based-network.png}}
     \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita). \\
-      Fonte: Baseado em figura de Wikimedia Commons}
+      Fonte: Baseado em figura de Wikimedia Commons (\url{http://commons.wikimedia.org/wiki/File:Computer_n_screen.svg}
+      Última visita em 01/12/2013).
+    }
     \end{centering}
   \end{figure}
 
   Uma rede peer-to-peer é um tipo de arquitetura de rede descentralizada e distribuída
-  onde cada nó individual da rede atuam como consumidores e fornecedores de recursos,
+  onde cada nó individual da rede atua como consumidor e fornecedor de recursos,
   simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
   requisitam serviços fornecidos por servidores centrais. \cite{peertopeer:definition}
   
@@ -82,11 +109,13 @@
 
 \section{Vikings}
 \label{sec:conceitos:vikings}
-  O \textit{vikings}\footnotemark{} é um software livre produzido numa experiência de mini-projetos realizada pelo USPGameDev\footnotemark. 
-  Foi desenvolvido em Janeiro e Fevereiro de 2013 por Henrique Gemignani Passos Lima e Wilson Kazuo Mizutani 
-  utilizando a LÖVE, um arcabouço para jogos 2D em Lua\footnotemark{}.
+  O \textit{vikings}\footnotemark{} é um software livre produzido numa experiência de mini-projetos
+  realizada pelo USPGameDev\footnotemark. Foi desenvolvido em Janeiro e Fevereiro de 2013 por
+  Henrique Gemignani Passos Lima e Wilson Kazuo Mizutani utilizando a LÖVE, um arcabouço para jogos
+  2D em Lua\footnotemark{}. A figura 2.2 apresenta uma \textit{screenshot} do vikings.
   
   \begin{figure}
+    \label{sec:conceitos:vikings:screenshot}
     \includegraphics{imagens/vikings-1.png}
     \caption{Imagem do vikings}
   \end{figure}
@@ -97,8 +126,8 @@
     Página do projeto: \url{http://uspgamedev.org/projetos/vikings/} (última visita em 23/11/2013).
   }
   \stepcounter{footnote}\footnotetext{
-    O USPGameDev é um grupo de pesquisa e desenvolvimento de jogos da
-    Universidade de São Paulo. Ver \url{http://uspgamedev.org/} (última visita em 03/09/2013).
+    O USPGameDev é um grupo de pesquisa e desenvolvimento de jogos da Universidade de São Paulo.
+    Página oficial: \url{http://uspgamedev.org/} (última visita em 03/09/2013).
   }
   \stepcounter{footnote}\footnotetext{
     Página oficial: \url{http://www.lua.org/} (última visita em 23/11/2013).
@@ -122,14 +151,14 @@
     \subsubsection{Orientação a Objetos}
       Lua não possui orientação a objetos nativamente, mas utilizando as ferramentas da linguagem é possível
       implementar um sistema de orientação a objetos baseada em protótipos.
-      No projeto, utilizamos o LUX\footnotemark{}, escrito pelo próprio Wilson, em vez de repetir uma implementação.
+      No projeto, utilizamos o LUX\footnotemark{}, escrito pelo Wilson, em vez de repetir uma implementação.
       
       \footnotetext{
         Página do projeto: \url{https://github.com/Kazuo256/luxproject} (última visita em 23/11/2013).
       }
     
     \subsubsection{Geração procedimental de conteúdo}
-      Para a geração dos mapas de cavernas, utilizamos o algorítimo de automato celular, descrito no RogueBasin,
+      Para a geração dos mapas de cavernas, utilizamos o algoritmo de autômato celular, descrito no RogueBasin,
       \cite{roguebasin:cellularautomata} e levemente alterado para criar plataformas mais largas. Para
       evitar problemas de áreas desconexas, há um tratamento posterior do mapa onde áreas desconexas são unidas.
       Por fim, procuramos por plataformas vazias onde popular com monstros e itens.
