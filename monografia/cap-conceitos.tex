@@ -94,18 +94,33 @@ principal deste TCC.
 
   Uma rede peer-to-peer é um tipo de arquitetura de rede descentralizada e distribuída
   onde cada nó individual da rede atua como consumidor e fornecedor de recursos,
-  simultaneamente, em contraste com redes cliente-servidor onde nós clientes apenas
+  simultaneamente, em contraste com redes cliente-servidor onde alguns nós apenas
   requisitam serviços fornecidos por servidores centrais. \cite{peertopeer:definition}
   
-  O exemplo mais famoso de uma rede peer-to-peer é o BitTorrent. Nela, um usuário utiliza um
+  Existem diversas formas para esses nós individuais, chamados de \textit{peers}, encontrarem
+  recursos na rede e calcular rotas, em geral utilizando uma rede sobreposta (\textit{overlay
+  network}) ao TCP/IP, permitindo que os peers se comuniquem diretamente um com os outros.
+  
+  Redes peer-to-peer podem ser classificadas de acordo com a organização da rede sobreposta:
+  \begin{itemize}
+    \item Redes Não-Estruturadas: Não existe nenhuma regra para a estrutura da rede, tornando impossível
+        buscas eficientes, mas resistente a ataques.
+    \item Redes Estruturadas: A rede sobreposta é organizada numa topologia específica, permitindo a busca
+        eficiente por recursos específicos, mesmo aqueles raros. No entanto, implica num consumo maior de
+        processamento e memória de todos os peers.
+    \item Redes Híbridas: Uma combinação do modelo peer-to-peer com o cliente-servidor. Costuma incluir um
+        servidor que auxilia os peers a encontrar outros peers.
+  \end{itemize}
+  
+  Um exemplo famoso de uma rede peer-to-peer é o BitTorrent. Nela, um usuário utiliza um
   arquivo de meta-dados \textit{.torrent} para conhecer um servidor responsável pelo arquivos
   chamado \textit{tracker} e dados sobre os arquivos. O cliente se anuncia para o \textit{tracker} que
   por sua vez informa o cliente de outros peers que estão trabalhando com o mesmo \textit{.torrent}.
+  Nesse caso, a rede pode ser considerada como híbrida.
   
   Uma extensão adicionada posteriormente ao BitTorrent é a tabela de hash distribuída (DHT).
   A DHT é uma forma de remover a necessidade dos \textit{trackers}, utilizando uma rede distribuída
-  para encontrar os peers diretamente. Essa rede é bem relevante para esse projeto pois tem um
-  objetivo e implementação bastante similar ao proposto.
+  para encontrar os peers diretamente. Nesse caso, a rede pode ser considerada como estruturada.
 
 \section{Vikings}
 \label{sec:conceitos:vikings}
