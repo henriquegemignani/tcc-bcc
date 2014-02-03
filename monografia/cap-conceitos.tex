@@ -175,12 +175,6 @@ principal deste TCC.
       \footnotetext{
         Página do projeto: \url{https://github.com/Kazuo256/luxproject} (última visita em 23/11/2013).
       }
-    
-    \subsubsection{Geração procedimental de conteúdo}
-      Para a geração dos mapas de cavernas, utilizamos o algoritmo de autômato celular, descrito no RogueBasin,
-      \cite{roguebasin:cellularautomata} e levemente alterado para criar plataformas mais largas. Para
-      evitar problemas de áreas desconexas, há um tratamento posterior do mapa onde áreas desconexas são unidas.
-      Por fim, procuramos por plataformas vazias onde popular com monstros e itens.
       
     \subsubsection{Tiles}
       O mapa do jogo é dividido em \textit{tiles}, quadrados com imagens e outras informações como se é sólido.
@@ -189,3 +183,27 @@ principal deste TCC.
       
       Como existe um mapeamento de posições no mundo para tiles, é possível armazenar quais objetos estão em cada
       tile, permitindo uma descobrir rapidamente todos os objetos próximos.
+    
+    \subsubsection{Geração procedimental de conteúdo}
+      Para a geração dos mapas de cavernas, utilizamos o algoritmo de autômato celular, descrito no RogueBasin,
+      \cite{roguebasin:cellularautomata} e levemente alterado para criar plataformas mais largas.
+      
+      Para solucionar o problema de áreas desconexas existente no problema original, há um tratamento posterior
+      do mapa onde criamos conjuntos de regiões abertas do mapa. Depois, para cada região, começando pelas menores,
+      escolhemos região mais próxima dela e criamos um túnel para uni-las.
+      
+      Por último, procuramos por tiles sólidos com espaço em cima e anotamos como lugares em potencial para adicionar
+      itens, monstros e até mesmo jogadores.
+      
+    \subsubsection{Sistema de Coisas}
+      Num jogo, é interessante ter uma classe base que representa todos os objetos do jogo. Isso permite
+      que mais elementos do jogo se comporte da mesma maneira, além de simplificar o código. No caso do
+      \textit{vikings}, essa classe se chama \textit{thing} (coisa). Essa classe possui o código que permite
+      um elemento do jogo tenha uma posição, tenha uma parte visual e até mesmo respeite à gravidade e não entre
+      dentro do cenário.
+      
+      Com base na orientação a objetos baseada em protótipos, é simples criar novos tipos de objetos, assim
+      como duplicar um existente.
+    
+    
+      
