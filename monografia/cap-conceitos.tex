@@ -165,8 +165,12 @@ principal deste TCC.
     
     \subsubsection{Orientação a Objetos}
       Lua não possui orientação a objetos nativamente, mas utilizando as ferramentas da linguagem é possível
-      implementar um sistema de orientação a objetos baseada em protótipos.
+      implementar um sistema de orientação a objetos baseado em protótipos.
       No projeto, utilizamos o LUX\footnotemark{}, escrito pelo Wilson, em vez de repetir uma implementação.
+      
+      Num sistema de orientação a objetos baseado em protótipos, não existe classes. Novos objetos são instanciados
+      \textit{clonando} um objeto já existente. Novos métodos podem ser adicionados, removidos ou alterados em
+      tempo de execução, criando o que funciona como novas classes.
       
       \footnotetext{
         Página do projeto: \url{https://github.com/Kazuo256/luxproject} (última visita em 23/11/2013).
@@ -177,3 +181,11 @@ principal deste TCC.
       \cite{roguebasin:cellularautomata} e levemente alterado para criar plataformas mais largas. Para
       evitar problemas de áreas desconexas, há um tratamento posterior do mapa onde áreas desconexas são unidas.
       Por fim, procuramos por plataformas vazias onde popular com monstros e itens.
+      
+    \subsubsection{Tiles}
+      O mapa do jogo é dividido em \textit{tiles}, quadrados com imagens e outras informações como se é sólido.
+      Os tiles são utilizados para representar visualmente o mapa, minimizar a renderização de o que não está
+      visível, assim como auxiliar a detectar colisões entre objetos.
+      
+      Como existe um mapeamento de posições no mundo para tiles, é possível armazenar quais objetos estão em cada
+      tile, permitindo uma descobrir rapidamente todos os objetos próximos.
